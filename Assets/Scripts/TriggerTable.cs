@@ -6,7 +6,7 @@ public class TriggerTable : MonoBehaviour
 {
 	private void OnTriggerEnter(Collider other)
 	{
-		Debug.Log("Table open!");
+		PausedMenuHandler.Instance.OpenSettings();
 		gameObject.SetActive(false);
 	}
 }
