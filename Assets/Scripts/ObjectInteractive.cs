@@ -6,12 +6,13 @@ using UnityEngine;
 public class ObjectInteractive : MonoBehaviour
 {
 	private Outline _outline;
-	[SerializeField] private Transform _pointMove;
+	private IThings _thing;
 
 	private void Start()
 	{
 		_outline = GetComponent<Outline>();
 		_outline.enabled = false;
+		_thing = GetComponent<IThings>();
 	}
 
 	public void OnMouseEnter()
@@ -28,7 +29,6 @@ public class ObjectInteractive : MonoBehaviour
 
 	public void OnMouseDown()
 	{
-		_pointMove.gameObject.SetActive(true);
-		PlayerController.Instance.Move(_pointMove.position);
+		_thing.Execute();
 	}
 }
