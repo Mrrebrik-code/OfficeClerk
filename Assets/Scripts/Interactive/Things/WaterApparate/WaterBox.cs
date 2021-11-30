@@ -54,6 +54,7 @@ public class WaterBox : MonoBehaviour, IThings
 		}
 		else
 		{
+			PlayerController.Instance.WaterBox.SetActive(true);
 			Debug.Log("Выподобрали бочку с водой!");
 			Inventory.Instance.AddThing(this);
 			Destroy(gameObject);

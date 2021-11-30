@@ -30,6 +30,7 @@ public class WaterApparate : MonoBehaviour, IThings
 
 			if(waterBox != null)
 			{
+				PlayerController.Instance.WaterBox.SetActive(false);
 				SetWaterBox((WaterBox)waterBox);
 			}
 			else

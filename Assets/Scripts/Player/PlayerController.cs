@@ -13,6 +13,8 @@ public class PlayerController : MonoBehaviour
 
 	public bool IsHitMove = true;
 
+	public GameObject WaterBox;
+
 	private void Awake()
 	{
 		Instance = this;
