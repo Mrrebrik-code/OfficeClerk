@@ -1,12 +1,16 @@
-﻿using System.Collections;
+﻿using Handlers;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class TriggerTable : MonoBehaviour
+namespace Interactive.Things
 {
-	private void OnTriggerEnter(Collider other)
+	public class TriggerTable : MonoBehaviour
 	{
-		PausedMenuHandler.Instance.OpenSettings();
-		gameObject.SetActive(false);
+		private void OnTriggerEnter(Collider other)
+		{
+			PausedMenuHandler.Instance.OpenSettings();
+			gameObject.SetActive(false);
+		}
 	}
 }

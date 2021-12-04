@@ -1,46 +1,48 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 using UnityEngine.AI;
 
-public class PlayerController : MonoBehaviour
+namespace Player
 {
-	public static PlayerController Instance;
-	private NavMeshAgent _agent;
-	private Animator _animator;
-	private Rigidbody _regedbody;
-	private Camera _camera;
-
-	public bool IsHitMove = true;
-
-	public GameObject WaterBox;
-
-	private void Awake()
+	public class PlayerController : MonoBehaviour
 	{
-		Instance = this;
-		_camera = Camera.main;
-		_animator = GetComponent<Animator>();
-		_agent = GetComponent<NavMeshAgent>();
-		_regedbody = GetComponent<Rigidbody>();
-	}
+		public static PlayerController Instance;
+		private NavMeshAgent _agent;
+		private Animator _animator;
+		private Rigidbody _regedbody;
+		private Camera _camera;
 
-	private void Update()
-	{
-		if (Input.GetMouseButtonDown(0) && IsHitMove)
+		public bool IsHitMove = true;
+
+		public GameObject WaterBox;
+
+		private void Awake()
 		{
-			RaycastHit hit;
-			if (Physics.Raycast(_camera.ScreenPointToRay(Input.mousePosition), out hit))
-			{
-				Move(hit.point);
-			}
+			Instance = this;
+			_camera = Camera.main;
+			_animator = GetComponent<Animator>();
+			_agent = GetComponent<NavMeshAgent>();
+			_regedbody = GetComponent<Rigidbody>();
 		}
 
-		_animator.SetBool("Move", transform.position != _agent.destination);
+		private void Update()
+		{
+			if (Input.GetMouseButtonDown(0) && IsHitMove)
+			{
+				RaycastHit hit;
+				if (Physics.Raycast(_camera.ScreenPointToRay(Input.mousePosition), out hit))
+				{
+					Move(hit.point);
+				}
+			}
 
-	}
+			_animator.SetBool("Move", transform.position != _agent.destination);
 
-	public void Move(Vector3 targetPosition)
-	{
-		_agent.SetDestination(targetPosition);
+		}
+
+		public void Move(Vector3 targetPosition)
+		{
+			_agent.SetDestination(targetPosition);
+		}
 	}
 }
+

@@ -4,67 +4,69 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-
-[Serializable]
-public class WorkmanProperties
+namespace AI
 {
-	public Action OnChange;
-	public bool IsReady { get; private set; }
-
-	private float _tValue;
-	private float _hValue;
-	private float _dValue;
-	public float ThirstValue
+	[Serializable]
+	public class WorkmanProperties
 	{
-		get { return _tValue; } 
-		set
+		public Action OnChange;
+		public bool IsReady { get; private set; }
+
+		private float _tValue;
+		private float _hValue;
+		private float _dValue;
+		public float ThirstValue
 		{
-			_tValue += value;
-			if (_tValue <= 0)
+			get { return _tValue; }
+			set
 			{
-				_tValue = 0;
-				IsReady = false;
+				_tValue += value;
+				if (_tValue <= 0)
+				{
+					_tValue = 0;
+					IsReady = false;
+				}
+				OnChange?.Invoke();
 			}
-			OnChange?.Invoke();
 		}
-	}
-	public float HungryValue
-	{
-		get { return _hValue; }
-		set
+		public float HungryValue
 		{
-			_hValue += value;
-			if (_hValue <= 0)
+			get { return _hValue; }
+			set
 			{
-				_hValue = 0;
-				IsReady = false;
+				_hValue += value;
+				if (_hValue <= 0)
+				{
+					_hValue = 0;
+					IsReady = false;
+				}
+				OnChange?.Invoke();
 			}
-			OnChange?.Invoke();
 		}
-	}
-	public float DreamValue
-	{
-		get { return _dValue; }
-		set
+		public float DreamValue
 		{
-			_dValue += value;
-			if (_dValue <= 0)
+			get { return _dValue; }
+			set
 			{
-				_dValue = 0;
-				IsReady = false;
+				_dValue += value;
+				if (_dValue <= 0)
+				{
+					_dValue = 0;
+					IsReady = false;
+				}
+				OnChange?.Invoke();
 			}
-			OnChange?.Invoke();
 		}
+
+
+
+		public WorkmanProperties(float tValue, float hValue, float dValue)
+		{
+			ThirstValue = tValue;
+			HungryValue = hValue;
+			DreamValue = dValue;
+			IsReady = true;
+		}
+
 	}
-
-
-
-	public WorkmanProperties(float tValue, float hValue, float dValue)
-	{
-		ThirstValue = tValue;
-		HungryValue = hValue;
-		DreamValue = dValue;
-		IsReady = true;
-	}
-
 }

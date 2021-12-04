@@ -5,18 +5,23 @@ using System.Text;
 using System.Threading.Tasks;
 using UnityEngine;
 
-public class PausedMenuHandler : MonoBehaviour
+namespace Handlers 
 {
-	public static PausedMenuHandler Instance;
-	[SerializeField] private GameObject _settings;
-
-	private void Awake()
+	public class PausedMenuHandler : MonoBehaviour
 	{
-		Instance = this;
-	}
+		public static PausedMenuHandler Instance;
+		[SerializeField] private GameObject _settings;
 
-	public void OpenSettings()
-	{
-		_settings.SetActive(true);
+		private void Awake()
+		{
+			Instance = this;
+		}
+
+		public void OpenSettings()
+		{
+			_settings.SetActive(true);
+		}
 	}
 }
+
+

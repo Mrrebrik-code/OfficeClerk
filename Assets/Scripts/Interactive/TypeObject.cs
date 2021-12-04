@@ -1,10 +1,9 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
-
-public enum TypeObject 
+﻿namespace Interactive
 {
-	WaterBox,
-	WaterApparature,
-	Table
+	public enum TypeObject
+	{
+		WaterBox,
+		WaterApparature,
+		Table
+	}
 }

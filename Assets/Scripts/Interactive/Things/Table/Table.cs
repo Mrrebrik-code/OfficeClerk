@@ -1,20 +1,24 @@
-﻿using System.Collections;
+﻿using Player;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Table : MonoBehaviour, IThings
+namespace Interactive.Things
 {
-	[SerializeField] private Transform _pointMove;
-
-	public TypeObject Type { get; set; }
-
-	private void Awake()
+	public class Table : MonoBehaviour, IThings
 	{
-		Type = TypeObject.Table;
-	}
-	public void Execute()
-	{
-		_pointMove.gameObject.SetActive(true);
-		PlayerController.Instance.Move(_pointMove.position);
+		[SerializeField] private Transform _pointMove;
+
+		public TypeObject Type { get; set; }
+
+		private void Awake()
+		{
+			Type = TypeObject.Table;
+		}
+		public void Execute()
+		{
+			_pointMove.gameObject.SetActive(true);
+			PlayerController.Instance.Move(_pointMove.position);
+		}
 	}
 }

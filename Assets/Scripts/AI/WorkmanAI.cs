@@ -5,128 +5,131 @@ using System.Linq;
 using UnityEngine;
 using UnityEngine.AI;
 
-[RequireComponent(typeof(NavMeshAgent))]
-public class WorkmanAI : MonoBehaviour, IWorkman
+namespace AI
 {
-	[SerializeField] PropertiesInfo _info;
-	private Animator _animator;
-
-	public List<IWorkmanState> States { get; private set; }
-	public IWorkmanState CurrentState { get; private set; }
-	public NavMeshAgent Agent { get; private set; }
-
-	public WorkmanProperties Properties { get; private set; }
-
-
-
-	public void Start()
+	[RequireComponent(typeof(NavMeshAgent))]
+	public class WorkmanAI : MonoBehaviour, IWorkman
 	{
-		_animator = GetComponent<Animator>();
-		Properties = new WorkmanProperties(10, 10, 10);
-		Properties.OnChange += OnChangePropertiesHandler;
-		_info.SetInfo(Properties);
-		Agent = GetComponent<NavMeshAgent>();
-		States = GetComponents<IWorkmanState>().ToList();
+		[SerializeField] PropertiesInfo _info;
+		private Animator _animator;
 
-		SetState(HasStateType(TypeState.Work));
-	}
+		public List<IWorkmanState> States { get; private set; }
+		public IWorkmanState CurrentState { get; private set; }
+		public NavMeshAgent Agent { get; private set; }
+
+		public WorkmanProperties Properties { get; private set; }
 
 
-	public void Update()
-	{
-		_animator.SetBool("Move", transform.position != Agent.destination);
-		if (CurrentState != null)
+
+		public void Start()
 		{
-			CurrentState.UpdateState();
+			_animator = GetComponent<Animator>();
+			Properties = new WorkmanProperties(10, 10, 10);
+			Properties.OnChange += OnChangePropertiesHandler;
+			_info.SetInfo(Properties);
+			Agent = GetComponent<NavMeshAgent>();
+			States = GetComponents<IWorkmanState>().ToList();
+
+			SetState(HasStateType(TypeState.Work));
 		}
-	}
 
-	public void OnCallBackHandler()
-	{
-		CurrentState.CallBack -= OnCallBackHandler;
-		CurrentState = null;
-		IWorkmanState tempState = null;
 
-		if(Properties.IsReady == false)
+		public void Update()
 		{
-			Debug.Log("Не могу работать, мои жизненные свойсва нужно восполнить!");
-			if (Properties.ThirstValue == 0)
+			_animator.SetBool("Move", transform.position != Agent.destination);
+			if (CurrentState != null)
 			{
-				Debug.Log("Я хочу пить, пойду попью воды!");
-				tempState = HasStateType(TypeState.Thirst);
+				CurrentState.UpdateState();
 			}
-			else if(Properties.HungryValue == 0)
+		}
+
+		public void OnCallBackHandler()
+		{
+			CurrentState.CallBack -= OnCallBackHandler;
+			CurrentState = null;
+			IWorkmanState tempState = null;
+
+			if (Properties.IsReady == false)
 			{
-				Debug.Log("Я проголадался, пойду покушаю!");
-				tempState = HasStateType(TypeState.Hungry);
+				Debug.Log("Не могу работать, мои жизненные свойсва нужно восполнить!");
+				if (Properties.ThirstValue == 0)
+				{
+					Debug.Log("Я хочу пить, пойду попью воды!");
+					tempState = HasStateType(TypeState.Thirst);
+				}
+				else if (Properties.HungryValue == 0)
+				{
+					Debug.Log("Я проголадался, пойду покушаю!");
+					tempState = HasStateType(TypeState.Hungry);
+				}
+				else
+				{
+					Debug.Log("Я устал, пойду посплю!");
+					tempState = HasStateType(TypeState.Dream);
+				}
 			}
 			else
 			{
-				Debug.Log("Я устал, пойду посплю!");
-				tempState = HasStateType(TypeState.Dream);
+				Debug.Log("Жажда равна 0, перешел в состояние: Попить воды!");
+				tempState = HasStateType(TypeState.Work);
 			}
-		}
-		else
-		{
-			Debug.Log("Жажда равна 0, перешел в состояние: Попить воды!");
-			tempState = HasStateType(TypeState.Work);
+
+			SetState(tempState);
 		}
 
-		SetState(tempState);
-	}
-
-	private void OnChangePropertiesHandler()
-	{
-		_info.SetInfo(Properties);
-	}
-
-	private IWorkmanState HasStateType(TypeState type)
-	{
-		Type typeState;
-		switch (type)
+		private void OnChangePropertiesHandler()
 		{
-			case TypeState.Work:
-				typeState = typeof(WorkState);
-				break;
-			case TypeState.Thirst:
-				typeState = typeof(ThirstState);
-				break;
-			case TypeState.Hungry:
-				typeState = typeof(HungryState);
-				break;
-			case TypeState.Dream:
-				typeState = typeof(DreamState);
-				break;
-			default:
-				typeState = null;
-				break;
+			_info.SetInfo(Properties);
 		}
-		if (typeState == null) return null;
 
-		foreach (var state in States)
+		private IWorkmanState HasStateType(TypeState type)
 		{
-			if(state.GetType() == typeState)
+			Type typeState;
+			switch (type)
 			{
-				return state;
+				case TypeState.Work:
+					typeState = typeof(WorkState);
+					break;
+				case TypeState.Thirst:
+					typeState = typeof(ThirstState);
+					break;
+				case TypeState.Hungry:
+					typeState = typeof(HungryState);
+					break;
+				case TypeState.Dream:
+					typeState = typeof(DreamState);
+					break;
+				default:
+					typeState = null;
+					break;
 			}
+			if (typeState == null) return null;
+
+			foreach (var state in States)
+			{
+				if (state.GetType() == typeState)
+				{
+					return state;
+				}
+			}
+
+			return null;
 		}
 
-		return null;
-	}
+		public void Move(Vector3 targetMove)
+		{
+			Agent.SetDestination(targetMove);
+		}
 
-	public void Move(Vector3 targetMove)
-	{
-		Agent.SetDestination(targetMove);
-	}
+		public void SetState(IWorkmanState state)
+		{
 
-	public void SetState(IWorkmanState state)
-	{
+			if (state == null) return;
 
-		if (state == null) return;
-
-		Debug.Log("Установка состояния: " + state.GetType());
-		CurrentState = state;
-		CurrentState.Execute(this);
-		CurrentState.CallBack += OnCallBackHandler;
+			Debug.Log("Установка состояния: " + state.GetType());
+			CurrentState = state;
+			CurrentState.Execute(this);
+			CurrentState.CallBack += OnCallBackHandler;
+		}
 	}
 }

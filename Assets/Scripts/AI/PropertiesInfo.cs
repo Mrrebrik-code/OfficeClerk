@@ -3,18 +3,21 @@ using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
 
-public class PropertiesInfo : MonoBehaviour
+namespace AI
 {
-	[SerializeField] private List<TMP_Text> _infoTexts;
-
-	public void SetInfo(WorkmanProperties properties)
+	public class PropertiesInfo : MonoBehaviour
 	{
-		foreach (var text in _infoTexts)
+		[SerializeField] private List<TMP_Text> _infoTexts;
+
+		public void SetInfo(WorkmanProperties properties)
 		{
-			text.text = 
-				$"Жажда: {properties.ThirstValue}%" +
-				$"\nГолод: {properties.HungryValue}%" +
-				$"\nУсталость: {properties.DreamValue}%";
+			foreach (var text in _infoTexts)
+			{
+				text.text =
+					$"Жажда: {properties.ThirstValue}%" +
+					$"\nГолод: {properties.HungryValue}%" +
+					$"\nУсталость: {properties.DreamValue}%";
+			}
 		}
 	}
 }

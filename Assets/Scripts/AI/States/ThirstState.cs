@@ -3,32 +3,35 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class ThirstState : MonoBehaviour, IWorkmanState
+namespace AI
 {
-	[SerializeField] private Transform _positionWater;
-	public Action CallBack { get; set; }
-
-	public WorkmanAI AI { get; private set; }
-
-	public void Execute(WorkmanAI ai)
+	public class ThirstState : MonoBehaviour, IWorkmanState
 	{
-		AI = ai;
-		AI.Move(_positionWater.position);
-	}
+		[SerializeField] private Transform _positionWater;
+		public Action CallBack { get; set; }
 
-	public void UpdateState()
-	{
-		if(AI.Properties.ThirstValue != 100)
+		public WorkmanAI AI { get; private set; }
+
+		public void Execute(WorkmanAI ai)
 		{
-			Thirst();
+			AI = ai;
+			AI.Move(_positionWater.position);
 		}
-	}
 
-	private void Thirst()
-	{
-		if(AI.Agent.destination == _positionWater.position)
+		public void UpdateState()
 		{
+			if (AI.Properties.ThirstValue != 100)
+			{
+				Thirst();
+			}
+		}
 
+		private void Thirst()
+		{
+			if (AI.Agent.destination == _positionWater.position)
+			{
+
+			}
 		}
 	}
 }

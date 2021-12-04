@@ -4,10 +4,13 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-public enum TypeState
+namespace AI
 {
-	Work,
-	Thirst,
-	Hungry,
-	Dream
+	public enum TypeState
+	{
+		Work,
+		Thirst,
+		Hungry,
+		Dream
+	}
 }

@@ -1,45 +1,50 @@
-﻿using System.Collections;
+﻿using Interactive;
+using Player;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-[RequireComponent(typeof(Outline))]
-public class ObjectInteractive : MonoBehaviour
+namespace Interactive
 {
-	private float _distanceInteractive = 3f;
-	private Outline _outline;
-	private IThings _thing;
-
-	private void Start()
+	[RequireComponent(typeof(Outline))]
+	public class ObjectInteractive : MonoBehaviour
 	{
-		_outline = GetComponent<Outline>();
-		_outline.enabled = false;
-		_thing = GetComponent<IThings>();
-	}
+		private float _distanceInteractive = 3f;
+		private Outline _outline;
+		private IThings _thing;
 
-	public void OnMouseEnter()
-	{
-		_outline.enabled = true;
-		PlayerController.Instance.IsHitMove = false;
-	}
-
-	public void OnMouseExit()
-	{
-		_outline.enabled = false;
-		PlayerController.Instance.IsHitMove = true;
-	}
-
-	public void OnMouseDown()
-	{
-		float distance = Vector3.Distance(transform.position, PlayerController.Instance.transform.position);
-		if(distance < _distanceInteractive)
+		private void Start()
 		{
-			Debug.Log("Вы нажали на объект: " + gameObject.name);
-			_thing.Execute();
+			_outline = GetComponent<Outline>();
+			_outline.enabled = false;
+			_thing = GetComponent<IThings>();
 		}
-		else
+
+		public void OnMouseEnter()
 		{
-			Debug.Log("Вы находитесь слишком далеко от объекта!");
+			_outline.enabled = true;
+			PlayerController.Instance.IsHitMove = false;
 		}
-		
+
+		public void OnMouseExit()
+		{
+			_outline.enabled = false;
+			PlayerController.Instance.IsHitMove = true;
+		}
+
+		public void OnMouseDown()
+		{
+			float distance = Vector3.Distance(transform.position, PlayerController.Instance.transform.position);
+			if (distance < _distanceInteractive)
+			{
+				Debug.Log("Вы нажали на объект: " + gameObject.name);
+				_thing.Execute();
+			}
+			else
+			{
+				Debug.Log("Вы находитесь слишком далеко от объекта!");
+			}
+
+		}
 	}
 }

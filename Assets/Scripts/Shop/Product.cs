@@ -1,14 +1,18 @@
 ﻿using UnityEngine;
 
-[CreateAssetMenu(fileName = "product", menuName = "Shop/Product")]
-public class Product : ScriptableObject
+namespace Shop
 {
-	public int Id;
-	public TypeProduct Type;
-	public string Name;
-	public string Description;
-	public int Price;
+	[CreateAssetMenu(fileName = "product", menuName = "Shop/Product")]
+	public class Product : ScriptableObject
+	{
+		public int Id;
+		public TypeProduct Type;
+		public string Name;
+		public string Description;
+		public int Price;
 
-	public int LevelUp;
+		public int LevelUp;
+	}
 }
+
 

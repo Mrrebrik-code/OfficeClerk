@@ -1,53 +1,58 @@
-﻿using System;
+﻿using Player;
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class WaterApparate : MonoBehaviour, IThings
+
+namespace Interactive.Things
 {
-
-	[SerializeField] private WaterBox _waterBox;
-	private bool _isWaterBox = false;
-
-	public TypeObject Type { get; set; }
-	private void Awake()
+	public class WaterApparate : MonoBehaviour, IThings
 	{
-		_waterBox.OnWaterBoxOut += OnWaterBoxOutHandler;
-		Type = TypeObject.WaterApparature;
-	}
 
-	private void OnWaterBoxOutHandler()
-	{
-		_waterBox.gameObject.SetActive(false);
-		_isWaterBox = false;
-	}
+		[SerializeField] private WaterBox _waterBox;
+		private bool _isWaterBox = false;
 
-	public void Execute()
-	{
-		if(_isWaterBox == false)
+		public TypeObject Type { get; set; }
+		private void Awake()
 		{
-			var waterBox = Inventory.Instance.PutThing(TypeObject.WaterBox);
+			_waterBox.OnWaterBoxOut += OnWaterBoxOutHandler;
+			Type = TypeObject.WaterApparature;
+		}
 
-			if(waterBox != null)
+		private void OnWaterBoxOutHandler()
+		{
+			_waterBox.gameObject.SetActive(false);
+			_isWaterBox = false;
+		}
+
+		public void Execute()
+		{
+			if (_isWaterBox == false)
 			{
-				PlayerController.Instance.WaterBox.SetActive(false);
-				SetWaterBox((WaterBox)waterBox);
+				var waterBox = Inventory.Instance.PutThing(TypeObject.WaterBox);
+
+				if (waterBox != null)
+				{
+					PlayerController.Instance.WaterBox.SetActive(false);
+					SetWaterBox((WaterBox)waterBox);
+				}
+				else
+				{
+					Debug.Log("У вас нет бочки с водой!");
+				}
 			}
 			else
 			{
-				Debug.Log("У вас нет бочки с водой!");
+				Debug.Log("Бочка с водой уже установлена!");
 			}
 		}
-		else
-		{
-			Debug.Log("Бочка с водой уже установлена!");
-		}
-	}
 
-	public void SetWaterBox(WaterBox waterBox)
-	{
-		_waterBox.gameObject.SetActive(true);
-		_waterBox.Init(waterBox.Value);
-		_isWaterBox = true;
+		public void SetWaterBox(WaterBox waterBox)
+		{
+			_waterBox.gameObject.SetActive(true);
+			_waterBox.Init(waterBox.Value);
+			_isWaterBox = true;
+		}
 	}
 }

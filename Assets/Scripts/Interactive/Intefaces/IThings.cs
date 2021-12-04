@@ -1,9 +1,10 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
-
-public interface IThings
+﻿namespace Interactive 
 {
-	TypeObject Type { get; set; }
-	void Execute();
+	public interface IThings
+	{
+		TypeObject Type { get; set; }
+		void Execute();
+	}
 }
+
+
