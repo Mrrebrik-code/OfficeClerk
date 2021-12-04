@@ -17,19 +17,7 @@ public class WorkmanAI : MonoBehaviour, IWorkman
 
 	public WorkmanProperties Properties { get; private set; }
 
-	public void OnCallBackHandler()
-	{
-		CurrentState.CallBack -= OnCallBackHandler;
-		CurrentState = null;
-		foreach (var state in States)
-		{
-			if (state is ThirstState stateOut)
-			{
-				SetState(stateOut);
-				break;
-			}
-		}
-	}
+
 
 	public void Start()
 	{
@@ -39,21 +27,10 @@ public class WorkmanAI : MonoBehaviour, IWorkman
 		_info.SetInfo(Properties);
 		Agent = GetComponent<NavMeshAgent>();
 		States = GetComponents<IWorkmanState>().ToList();
-		
-		foreach (var state in States)
-		{
-			if (state is WorkState stateOut)
-			{
-				SetState(stateOut);
-				break;
-			}
-		}
+
+		SetState(HasStateType(TypeState.Work));
 	}
 
-	private void OnChangePropertiesHandler()
-	{
-		_info.SetInfo(Properties);
-	}
 
 	public void Update()
 	{
@@ -64,6 +41,79 @@ public class WorkmanAI : MonoBehaviour, IWorkman
 		}
 	}
 
+	public void OnCallBackHandler()
+	{
+		CurrentState.CallBack -= OnCallBackHandler;
+		CurrentState = null;
+		IWorkmanState tempState = null;
+
+		if(Properties.IsReady == false)
+		{
+			Debug.Log("Не могу работать, мои жизненные свойсва нужно восполнить!");
+			if (Properties.ThirstValue == 0)
+			{
+				Debug.Log("Я хочу пить, пойду попью воды!");
+				tempState = HasStateType(TypeState.Thirst);
+			}
+			else if(Properties.HungryValue == 0)
+			{
+				Debug.Log("Я проголадался, пойду покушаю!");
+				tempState = HasStateType(TypeState.Hungry);
+			}
+			else
+			{
+				Debug.Log("Я устал, пойду посплю!");
+				tempState = HasStateType(TypeState.Dream);
+			}
+		}
+		else
+		{
+			Debug.Log("Жажда равна 0, перешел в состояние: Попить воды!");
+			tempState = HasStateType(TypeState.Work);
+		}
+
+		SetState(tempState);
+	}
+
+	private void OnChangePropertiesHandler()
+	{
+		_info.SetInfo(Properties);
+	}
+
+	private IWorkmanState HasStateType(TypeState type)
+	{
+		Type typeState;
+		switch (type)
+		{
+			case TypeState.Work:
+				typeState = typeof(WorkState);
+				break;
+			case TypeState.Thirst:
+				typeState = typeof(ThirstState);
+				break;
+			case TypeState.Hungry:
+				typeState = typeof(HungryState);
+				break;
+			case TypeState.Dream:
+				typeState = typeof(DreamState);
+				break;
+			default:
+				typeState = null;
+				break;
+		}
+		if (typeState == null) return null;
+
+		foreach (var state in States)
+		{
+			if(state.GetType() == typeState)
+			{
+				return state;
+			}
+		}
+
+		return null;
+	}
+
 	public void Move(Vector3 targetMove)
 	{
 		Agent.SetDestination(targetMove);
@@ -71,6 +121,9 @@ public class WorkmanAI : MonoBehaviour, IWorkman
 
 	public void SetState(IWorkmanState state)
 	{
+		Debug.Log("Установка состояния: " + state.GetType());
+		if (state == null) return;
+
 		CurrentState = state;
 		CurrentState.Execute(this);
 		CurrentState.CallBack += OnCallBackHandler;
