@@ -5,6 +5,7 @@ using UnityEngine;
 [RequireComponent(typeof(Outline))]
 public class ObjectInteractive : MonoBehaviour
 {
+	private float _distanceInteractive = 3f;
 	private Outline _outline;
 	private IThings _thing;
 
@@ -29,6 +30,16 @@ public class ObjectInteractive : MonoBehaviour
 
 	public void OnMouseDown()
 	{
-		_thing.Execute();
+		float distance = Vector3.Distance(transform.position, PlayerController.Instance.transform.position);
+		if(distance < _distanceInteractive)
+		{
+			Debug.Log("Вы нажали на объект: " + gameObject.name);
+			_thing.Execute();
+		}
+		else
+		{
+			Debug.Log("Вы находитесь слишком далеко от объекта!");
+		}
+		
 	}
 }

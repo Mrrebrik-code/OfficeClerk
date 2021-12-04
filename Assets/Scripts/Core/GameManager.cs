@@ -4,15 +4,11 @@ using UnityEngine;
 
 public class GameManager : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
+	private List<WorkmanAI> _workmans = new List<WorkmanAI>();
 
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
+	public void AddWorkman(WorkmanAI workman)
+	{
+		_workmans.Add(workman);
+		Debug.Log("Добавлен новый работник в штаб!");
+	}
 }

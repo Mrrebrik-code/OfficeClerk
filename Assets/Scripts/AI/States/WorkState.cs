@@ -28,7 +28,7 @@ public class WorkState : MonoBehaviour, IWorkmanState
 
 		if (AI.Properties.IsReady)
 		{
-			Debug.Log("Add work done!");
+			Debug.Log("Заработал одну печеньку!");
 			AI.Properties.ThirstValue = -2;
 			AI.Properties.HungryValue = -4;
 			AI.Properties.DreamValue = -1;
@@ -43,7 +43,7 @@ public class WorkState : MonoBehaviour, IWorkmanState
 
 	public void Execute(WorkmanAI ai)
 	{
-		Debug.Log("State work execute!");
+		Debug.Log("Рабоче состояние установлено!");
 		AI = ai;
 		AI.Move(_positionWork.position);
 	}

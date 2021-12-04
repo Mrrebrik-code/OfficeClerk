@@ -18,6 +18,17 @@ public class ThirstState : MonoBehaviour, IWorkmanState
 
 	public void UpdateState()
 	{
+		if(AI.Properties.ThirstValue != 100)
+		{
+			Thirst();
+		}
+	}
 
+	private void Thirst()
+	{
+		if(AI.Agent.destination == _positionWater.position)
+		{
+
+		}
 	}
 }

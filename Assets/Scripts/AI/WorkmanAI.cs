@@ -121,9 +121,10 @@ public class WorkmanAI : MonoBehaviour, IWorkman
 
 	public void SetState(IWorkmanState state)
 	{
-		Debug.Log("Установка состояния: " + state.GetType());
+
 		if (state == null) return;
 
+		Debug.Log("Установка состояния: " + state.GetType());
 		CurrentState = state;
 		CurrentState.Execute(this);
 		CurrentState.CallBack += OnCallBackHandler;
