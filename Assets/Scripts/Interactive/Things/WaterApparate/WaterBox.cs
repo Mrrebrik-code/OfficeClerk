@@ -1,4 +1,5 @@
-﻿using Player;
+﻿using AI;
+using Player;
 using System;
 using UnityEngine;
 
@@ -41,11 +42,11 @@ namespace Interactive.Things
 				{
 					_isFull = false;
 				}
+
 				if (_isFull)
 				{
 					Debug.Log("Попил воды!");
-					Value -= 20;
-					_info.SetValue(Value);
+					Drank();
 				}
 				else
 				{
@@ -62,5 +63,23 @@ namespace Interactive.Things
 			}
 
 		}
+
+		public void Drank(WorkmanAI ai = null)
+		{
+			if(_isFull && _isSetToBox)
+			{
+				if(ai != null)
+				{
+					ai.Properties.ThirstValue = 100;
+					Value -= 20;
+				}
+				else
+				{
+					Value -= 20;
+				}
+				_info.SetValue(Value);
+			}
+		}
+
 	}
 }

@@ -70,7 +70,7 @@ namespace AI
 			}
 			else
 			{
-				Debug.Log("Жажда равна 0, перешел в состояние: Попить воды!");
+				Debug.Log("Готов к работе! Пошел работать!");
 				tempState = HasStateType(TypeState.Work);
 			}
 

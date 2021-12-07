@@ -21,11 +21,9 @@ namespace AI
 			set
 			{
 				_tValue += value;
-				if (_tValue <= 0)
-				{
-					_tValue = 0;
-					IsReady = false;
-				}
+				if (_tValue <= 0) _tValue = 0;
+
+				ReadyWorkman();
 				OnChange?.Invoke();
 			}
 		}
@@ -35,11 +33,9 @@ namespace AI
 			set
 			{
 				_hValue += value;
-				if (_hValue <= 0)
-				{
-					_hValue = 0;
-					IsReady = false;
-				}
+				if (_hValue <= 0) _hValue = 0;
+
+				ReadyWorkman();
 				OnChange?.Invoke();
 			}
 		}
@@ -49,15 +45,18 @@ namespace AI
 			set
 			{
 				_dValue += value;
-				if (_dValue <= 0)
-				{
-					_dValue = 0;
-					IsReady = false;
-				}
+				if (_dValue <= 0) _dValue = 0;
+
+				ReadyWorkman();
 				OnChange?.Invoke();
 			}
 		}
 
+		private void ReadyWorkman()
+		{
+			if (_tValue > 0 && _hValue > 0 && _dValue > 0) IsReady = true;
+			else IsReady = false;
+		}
 
 
 		public WorkmanProperties(float tValue, float hValue, float dValue)

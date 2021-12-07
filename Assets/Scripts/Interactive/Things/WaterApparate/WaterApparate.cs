@@ -9,8 +9,9 @@ namespace Interactive.Things
 {
 	public class WaterApparate : MonoBehaviour, IThings
 	{
-
 		[SerializeField] private WaterBox _waterBox;
+		public WaterBox WaterBox { get { return _waterBox; } }
+
 		private bool _isWaterBox = false;
 
 		public TypeObject Type { get; set; }

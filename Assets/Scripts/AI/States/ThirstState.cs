@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Interactive.Things;
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -11,6 +12,7 @@ namespace AI
 		public Action CallBack { get; set; }
 
 		public WorkmanAI AI { get; private set; }
+		private WaterApparate _waterApparate;
 
 		public void Execute(WorkmanAI ai)
 		{
@@ -28,10 +30,21 @@ namespace AI
 
 		private void Thirst()
 		{
-			if (AI.Agent.destination == _positionWater.position)
+			if (_waterApparate != null)
 			{
+				_waterApparate.WaterBox.Drank(AI);
 
+				if (AI.Properties.ThirstValue == 100)
+				{
+					_waterApparate = null;
+					CallBack?.Invoke();
+				}
 			}
+		}
+
+		public void SetWatterApparateUsing(WaterApparate waterApparate)
+		{
+			_waterApparate = waterApparate;
 		}
 	}
 }

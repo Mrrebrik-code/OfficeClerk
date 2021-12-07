@@ -577,9 +577,10 @@ GameObject:
   - component: {fileID: 776538383314086684}
   - component: {fileID: 776538383314086683}
   - component: {fileID: 776538383314086682}
+  - component: {fileID: 5283711572039334982}
   - component: {fileID: 776538383314086681}
   - component: {fileID: 776538383314086687}
-  - component: {fileID: 5283711572039334982}
+  - component: {fileID: 850250361}
   m_Layer: 0
   m_Name: Workman
   m_TagString: Untagged
@@ -677,6 +678,21 @@ CapsuleCollider:
   m_Height: 1.97
   m_Direction: 1
   m_Center: {x: 0, y: 0.96, z: 0}
+--- !u!114 &5283711572039334982
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 776538383314086680}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 669dc30be923af74595f773ceaa5fcd5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _infoTexts:
+  - {fileID: 6868390717432792796}
+  - {fileID: 7379563973751822764}
 --- !u!114 &776538383314086681
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -703,7 +719,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _positionWork: {fileID: 0}
---- !u!114 &5283711572039334982
+--- !u!114 &850250361
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -712,12 +728,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 776538383314086680}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 669dc30be923af74595f773ceaa5fcd5, type: 3}
+  m_Script: {fileID: 11500000, guid: 8574868cd10942f45a5169c2ba33b910, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _infoTexts:
-  - {fileID: 6868390717432792796}
-  - {fileID: 7379563973751822764}
+  _positionWater: {fileID: 0}
 --- !u!1 &776538383341580186
 GameObject:
   m_ObjectHideFlags: 0
