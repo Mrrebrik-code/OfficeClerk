@@ -26,7 +26,7 @@ namespace Player
 
 		private void Update()
 		{
-			if (Input.GetMouseButtonDown(0) && IsHitMove)
+			if (Input.GetMouseButtonDown(1) && IsHitMove)
 			{
 				RaycastHit hit;
 				if (Physics.Raycast(_camera.ScreenPointToRay(Input.mousePosition), out hit))

@@ -4,6 +4,7 @@
 	{
 		WaterBox,
 		WaterApparature,
-		Table
+		Table,
+		Burger
 	}
 }

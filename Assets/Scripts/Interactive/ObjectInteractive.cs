@@ -38,6 +38,7 @@ namespace Interactive
 			if (distance < _distanceInteractive)
 			{
 				Debug.Log("Вы нажали на объект: " + gameObject.name);
+				PlayerController.Instance.IsHitMove = true;
 				_thing.Execute();
 			}
 			else

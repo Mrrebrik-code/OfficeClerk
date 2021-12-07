@@ -17,6 +17,7 @@ namespace Interactive.Things
 		{
 			Type = TypeObject.WaterBox;
 			_info.SetValue(Value);
+
 			if (_isSetToBox == false)
 			{
 				_info.gameObject.SetActive(false);
@@ -27,10 +28,12 @@ namespace Interactive.Things
 		{
 			_isSetToBox = true;
 			Value = value;
+
 			if (Value > 0)
 			{
 				_isFull = true;
 			}
+
 			_info.SetValue(Value);
 			_info.gameObject.SetActive(true);
 		}
@@ -38,25 +41,19 @@ namespace Interactive.Things
 		{
 			if (_isSetToBox)
 			{
-				if (Value <= 0)
-				{
-					_isFull = false;
-				}
+				if (Value <= 0) _isFull = false;
+
 
 				if (_isFull)
 				{
 					Debug.Log("Попил воды!");
 					Drank();
 				}
-				else
-				{
-					OnWaterBoxOut?.Invoke();
-					Debug.Log("Вода закончилась!");
-				}
 			}
 			else
 			{
 				PlayerController.Instance.WaterBox.SetActive(true);
+
 				Debug.Log("Выподобрали бочку с водой!");
 				Inventory.Instance.AddThing(this);
 				Destroy(gameObject);
@@ -76,6 +73,12 @@ namespace Interactive.Things
 				else
 				{
 					Value -= 20;
+				}
+				if(Value <= 0)
+				{
+					Debug.Log("Вода закончилась!");
+					OnWaterBoxOut?.Invoke();
+					return;
 				}
 				_info.SetValue(Value);
 			}

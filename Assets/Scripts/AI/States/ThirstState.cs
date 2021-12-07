@@ -37,11 +37,16 @@ namespace AI
 				if (AI.Properties.ThirstValue == 100)
 				{
 					_waterApparate = null;
-					CallBack?.Invoke();
+					StartCoroutine(Delay());
+					
 				}
 			}
 		}
-
+		private IEnumerator Delay()
+		{
+			yield return new WaitForSeconds(1f);
+			CallBack?.Invoke();
+		}
 		public void SetWatterApparateUsing(WaterApparate waterApparate)
 		{
 			_waterApparate = waterApparate;

@@ -33,8 +33,8 @@ namespace AI
 			{
 				Debug.Log("Заработал одну печеньку!");
 				AI.Properties.ThirstValue = -10;
-				AI.Properties.HungryValue = -2;
-				AI.Properties.DreamValue = -1;
+				AI.Properties.HungryValue = -4;
+				AI.Properties.DreamValue = 0;
 			}
 			else
 			{
