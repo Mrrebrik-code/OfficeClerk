@@ -6,17 +6,34 @@ namespace Shop
 {
 	public class ShopHandler : MonoBehaviour
 	{
-		private List<Product> _products = new List<Product>();
+		[SerializeField] private ProductHolder _productHolderPrefab;
+		[SerializeField] private Transform _contentProducts;
+
+		private List<ProductHolder> _products = new List<ProductHolder>();
 
 		private void Awake()
 		{
-			LoadProducts();
+			Init();
 		}
 
-		private bool LoadProducts()
+		private List<Product> LoadProducts()
 		{
-			_products = Resources.LoadAll<Product>("Products").ToList();
-			return _products != null;
+			return Resources.LoadAll<Product>("Products").ToList();
+		}
+
+		private void Init()
+		{
+			List<Product> products = LoadProducts();
+			if (products == null) return;
+
+			foreach (var product in products)
+			{
+				ProductHolder productHolderTemp = Instantiate(_productHolderPrefab, _contentProducts);
+				productHolderTemp.SetProduct(product);
+
+				_products.Add(productHolderTemp);
+			}
+
 		}
 	}
 }

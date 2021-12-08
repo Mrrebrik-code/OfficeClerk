@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using AI;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -10,6 +11,8 @@ namespace Interactive.Things
 		[SerializeField] private List<Burger> _burgers = new List<Burger>();
 		private List<Burger> _doneBurgers = new List<Burger>();
 
+
+
 		private void Awake()
 		{
 			_burgers.ForEach(burger =>
@@ -18,7 +21,7 @@ namespace Interactive.Things
 				burger.IsDone = false;
 				burger.gameObject.SetActive(false);
 			});
-			CookingBurgers(5);
+			//CookingBurgers(0);
 		}
 		public void CookingBurgers(int count)
 		{
@@ -49,11 +52,38 @@ namespace Interactive.Things
 			}
 		}
 
-		public void EatBurger(Burger burger)
+		private Burger HasDoneBurger()
 		{
-			_burgers.Add(burger);
-			_doneBurgers.Remove(burger);
-			burger.gameObject.SetActive(false);
+			if (_doneBurgers.Count <= 0) return null;
+			else
+			{
+				return _doneBurgers[0];
+			}
+		}
+
+		public void EatBurger(Burger burger = null, WorkmanAI ai = null)
+		{
+			if(burger != null)
+			{
+				_burgers.Add(burger);
+				_doneBurgers.Remove(burger);
+				burger.gameObject.SetActive(false);
+			}
+			else
+			{
+				if (ai == null) return;
+
+				Burger burgerTemp = HasDoneBurger();
+
+				if(burgerTemp != null)
+				{
+					ai.Properties.HungryValue = 100;
+					_burgers.Add(burgerTemp);
+					_doneBurgers.Remove(burgerTemp);
+					burgerTemp.gameObject.SetActive(false);
+				}
+			}
+			
 		}
 	}
 }

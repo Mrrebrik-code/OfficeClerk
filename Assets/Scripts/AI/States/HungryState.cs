@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Interactive.Things;
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -11,6 +12,7 @@ namespace AI
 		public WorkmanAI AI { get; private set; }
 
 		[SerializeField] private Transform _positionHungry;
+		private BurgerStand _burgerStand;
 
 		public void Execute(WorkmanAI ai)
 		{
@@ -28,10 +30,27 @@ namespace AI
 
 		private void Hungry()
 		{
-			if (AI.Agent.destination == _positionHungry.position)
+			if(_burgerStand != null)
 			{
+				_burgerStand.EatBurger(null, AI);
 
+				if(AI.Properties.HungryValue == 100)
+				{
+					Debug.Log("Я покушал! Спасибо!");
+					_burgerStand = null;
+					CallBack?.Invoke();
+				}
+				else
+				{
+					Debug.Log("Что-то похоже нет гамбургеров! Надо бы купить!");
+				}
+				
 			}
+		}
+
+		public void SetBurgerStandUsing(BurgerStand burgerStand)
+		{
+			_burgerStand = burgerStand;
 		}
 	}
 }

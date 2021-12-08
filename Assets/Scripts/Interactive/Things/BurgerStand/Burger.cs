@@ -1,4 +1,5 @@
-﻿using System;
+﻿using AI;
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -7,7 +8,7 @@ namespace Interactive.Things
 {
 	public class Burger : MonoBehaviour, IThings
 	{
-		public Action<Burger> OnEateBurger;
+		public Action<Burger, WorkmanAI> OnEateBurger;
 		public bool IsDone { get; set; }
 		public TypeObject Type { get; set; }
 
@@ -17,7 +18,7 @@ namespace Interactive.Things
 		}
 		public void Execute()
 		{
-			OnEateBurger?.Invoke(this);
+			OnEateBurger?.Invoke(this, null);
 		}
 	}
 }
