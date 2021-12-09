@@ -24,6 +24,8 @@ namespace Interactive.Things
 				burger.IsDone = false;
 				burger.gameObject.SetActive(false);
 			});
+
+			_infoBurgerStand.SetMaxValueProgressBar(_cookingTime);
 		}
 		public void CookingBurgers(int count)
 		{
@@ -58,12 +60,20 @@ namespace Interactive.Things
 			_cooking = true;
 			for (int i = 0; i < count; i++)
 			{
-				yield return new WaitForSeconds(_cookingTime);
+				var tempProgress = 0f;
+				while(tempProgress != _cookingTime)
+				{
+					tempProgress += 1.2f * Time.deltaTime;
+					_infoBurgerStand.UpdateProgressBar(tempProgress);
+					if (tempProgress >= _cookingTime) tempProgress = _cookingTime;
+					yield return new WaitForEndOfFrame();
+				}
 				burgers[i].IsDone = true;
 				burgers[i].gameObject.SetActive(true);
 				_doneBurgers.Add(burgers[i]);
 				_burgers.Remove(burgers[i]);
 				_infoBurgerStand.SetCountBurgers(_doneBurgers.Count);
+				_infoBurgerStand.UpdateProgressBar(0f);
 			}
 			_cooking = false;
 		}
