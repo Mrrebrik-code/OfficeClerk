@@ -1,11 +1,11 @@
 ﻿using UnityEngine;
 using UnityEngine.AI;
+using Utils;
 
 namespace Player
 {
-	public class PlayerController : MonoBehaviour
+	public class PlayerController : SingletonMono<PlayerController>
 	{
-		public static PlayerController Instance;
 		private NavMeshAgent _agent;
 		private Animator _animator;
 		private Rigidbody _regedbody;
@@ -15,9 +15,9 @@ namespace Player
 
 		public GameObject WaterBox;
 
-		private void Awake()
+		public override void Awake()
 		{
-			Instance = this;
+			base.Awake();
 			_camera = Camera.main;
 			_animator = GetComponent<Animator>();
 			_agent = GetComponent<NavMeshAgent>();

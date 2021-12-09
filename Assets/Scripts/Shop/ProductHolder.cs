@@ -13,6 +13,10 @@ namespace Shop
 		{
 			Product = product;
 		}
+
+		public void Buy()
+		{
+		}
 	}
 }
 

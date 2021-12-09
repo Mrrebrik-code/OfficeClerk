@@ -3,7 +3,8 @@
 	public enum TypeProduct : int
 	{
 		Workman,
-		Eat
+		Burger,
+		WaterBox
 	}
 }
 

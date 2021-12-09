@@ -2,13 +2,18 @@
 using System.Collections.Generic;
 using UnityEngine;
 using AI;
+using Utils;
 
 namespace Core
 {
-	public class GameManager : MonoBehaviour
+	public class GameManager : SingletonMono<GameManager>
 	{
 		private List<WorkmanAI> _workmans = new List<WorkmanAI>();
 
+		public override void Awake()
+		{
+			base.Awake();
+		}
 		public void AddWorkman(WorkmanAI workman)
 		{
 			_workmans.Add(workman);

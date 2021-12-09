@@ -11258,10 +11258,20 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 964808050785986686, guid: 83689d2fb04a18c419a3636a0f1ab0a1,
+        type: 3}
+      propertyPath: m_text
+      value: 0/5
+      objectReference: {fileID: 0}
     - target: {fileID: 1611119302308932043, guid: 83689d2fb04a18c419a3636a0f1ab0a1,
         type: 3}
       propertyPath: m_Name
       value: BurgerStand
+      objectReference: {fileID: 0}
+    - target: {fileID: 1703601332180136864, guid: 83689d2fb04a18c419a3636a0f1ab0a1,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2094183536345379697, guid: 83689d2fb04a18c419a3636a0f1ab0a1,
         type: 3}
@@ -11316,6 +11326,11 @@ PrefabInstance:
     - target: {fileID: 2094183536345379697, guid: 83689d2fb04a18c419a3636a0f1ab0a1,
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5033464132794605211, guid: 83689d2fb04a18c419a3636a0f1ab0a1,
+        type: 3}
+      propertyPath: m_AnchoredPosition.x
       value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []

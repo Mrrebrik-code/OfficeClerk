@@ -7,6 +7,7 @@ namespace Interactive.Things
 {
 	public class BurgerStand : MonoBehaviour
 	{
+		[SerializeField] private InfoBurgerStand _infoBurgerStand;
 		[SerializeField] private float _cookingTime;
 		[SerializeField] private List<Burger> _burgers = new List<Burger>();
 		private List<Burger> _doneBurgers = new List<Burger>();
@@ -21,7 +22,7 @@ namespace Interactive.Things
 				burger.IsDone = false;
 				burger.gameObject.SetActive(false);
 			});
-			//CookingBurgers(0);
+			CookingBurgers(3);
 		}
 		public void CookingBurgers(int count)
 		{
@@ -49,6 +50,7 @@ namespace Interactive.Things
 				burgers[i].gameObject.SetActive(true);
 				_doneBurgers.Add(burgers[i]);
 				_burgers.Remove(burgers[i]);
+				_infoBurgerStand.SetCountBurgers(_doneBurgers.Count);
 			}
 		}
 
@@ -81,6 +83,7 @@ namespace Interactive.Things
 					_burgers.Add(burgerTemp);
 					_doneBurgers.Remove(burgerTemp);
 					burgerTemp.gameObject.SetActive(false);
+					_infoBurgerStand.SetCountBurgers(_doneBurgers.Count);
 				}
 			}
 			

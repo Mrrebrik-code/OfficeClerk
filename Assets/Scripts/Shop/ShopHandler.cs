@@ -1,18 +1,20 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
+using Utils;
 
 namespace Shop
 {
-	public class ShopHandler : MonoBehaviour
+	public class ShopHandler : SingletonMono<ShopHandler>
 	{
 		[SerializeField] private ProductHolder _productHolderPrefab;
 		[SerializeField] private Transform _contentProducts;
 
 		private List<ProductHolder> _products = new List<ProductHolder>();
 
-		private void Awake()
+		public override void Awake()
 		{
+			base.Awake();
 			Init();
 		}
 
@@ -33,7 +35,18 @@ namespace Shop
 
 				_products.Add(productHolderTemp);
 			}
+		}
 
+		public bool TryBuy(TypeProduct typeProduct)
+		{
+			switch(typeProduct)
+			{
+				case TypeProduct.Burger:
+
+					break;
+			}
+
+			return true;
 		}
 	}
 }

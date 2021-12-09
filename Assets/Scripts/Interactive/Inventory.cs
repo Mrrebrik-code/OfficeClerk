@@ -2,22 +2,22 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-
+using Utils;
 
 namespace Interactive
 {
-	public class Inventory : MonoBehaviour
+	public class Inventory : SingletonMono<Inventory>
 	{
-		public static Inventory Instance;
 		private List<IThings> _things = new List<IThings>();
 
-		private void Awake()
-		{
-			Instance = this;
-		}
 		public void AddThing(IThings thing)
 		{
 			_things.Add(thing);
+		}
+
+		public override void Awake()
+		{
+			base.Awake();
 		}
 
 		public IThings PutThing(TypeObject type)

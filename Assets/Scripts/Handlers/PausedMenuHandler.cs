@@ -4,17 +4,16 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using UnityEngine;
+using Utils;
 
 namespace Handlers 
 {
-	public class PausedMenuHandler : MonoBehaviour
+	public class PausedMenuHandler : SingletonMono<PausedMenuHandler>
 	{
-		public static PausedMenuHandler Instance;
 		[SerializeField] private GameObject _settings;
-
-		private void Awake()
+		public override void Awake()
 		{
-			Instance = this;
+			base.Awake();
 		}
 
 		public void OpenSettings()
