@@ -16,6 +16,7 @@ namespace Shop
 
 		public void Buy()
 		{
+			ShopHandler.Instance.TryBuy(Product.Type);
 		}
 	}
 }
