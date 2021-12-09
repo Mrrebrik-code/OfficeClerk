@@ -9,6 +9,7 @@ namespace Shop
 		public string Name;
 		public string Description;
 		public int Price;
+		public Sprite Sprite;
 
 		public int LevelUp;
 	}

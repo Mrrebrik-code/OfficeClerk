@@ -32,9 +32,9 @@ namespace AI
 			if (AI.Properties.IsReady)
 			{
 				Debug.Log("Заработал одну печеньку!");
-				AI.Properties.ThirstValue = -10;
+				AI.Properties.ThirstValue = -4;
 				AI.Properties.HungryValue = -4;
-				AI.Properties.DreamValue = 0;
+				AI.Properties.DreamValue = -4;
 			}
 			else
 			{

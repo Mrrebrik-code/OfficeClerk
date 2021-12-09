@@ -2,47 +2,60 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using Utils;
 
 namespace Interactive.Things
 {
-	public class BurgerStand : MonoBehaviour
+	public class BurgerStand : SingletonMono<BurgerStand>
 	{
 		[SerializeField] private InfoBurgerStand _infoBurgerStand;
 		[SerializeField] private float _cookingTime;
 		[SerializeField] private List<Burger> _burgers = new List<Burger>();
 		private List<Burger> _doneBurgers = new List<Burger>();
+		private bool _cooking = false;
 
 
-
-		private void Awake()
+		public override void Awake()
 		{
+			base.Awake();
 			_burgers.ForEach(burger =>
 			{
 				burger.OnEateBurger += EatBurger;
 				burger.IsDone = false;
 				burger.gameObject.SetActive(false);
 			});
-			CookingBurgers(3);
 		}
 		public void CookingBurgers(int count)
 		{
-			var burgers = new List<Burger>();
-			foreach (var burger in _burgers)
+			if (_cooking == false)
 			{
-				if (burger.IsDone == false)
+				var burgers = new List<Burger>();
+				foreach (var burger in _burgers)
 				{
-					burgers.Add(burger);
+					if (burger.IsDone == false)
+					{
+						burgers.Add(burger);
+					}
+				}
+				if (burgers != null)
+				{
+
+					StartCoroutine(DelayCooking(count, burgers));
+				}
+				else
+				{
+					Debug.Log("Мы приготовили вам уже 5 гамбургеров! Нельзя готовить больше 5 штук на прилавок!");
 				}
 			}
-			if(burgers != null)
+			else
 			{
-				StartCoroutine(DelayCooking(count, burgers));
+				Debug.Log("Уже готовитя гамбургеры! Пожалуйста подождите!");
 			}
-			
 		}
 
 		private IEnumerator DelayCooking(int count, List<Burger> burgers)
 		{
+			_cooking = true;
 			for (int i = 0; i < count; i++)
 			{
 				yield return new WaitForSeconds(_cookingTime);
@@ -52,6 +65,7 @@ namespace Interactive.Things
 				_burgers.Remove(burgers[i]);
 				_infoBurgerStand.SetCountBurgers(_doneBurgers.Count);
 			}
+			_cooking = false;
 		}
 
 		private Burger HasDoneBurger()

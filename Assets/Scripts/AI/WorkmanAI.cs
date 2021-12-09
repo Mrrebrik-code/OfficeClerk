@@ -33,6 +33,10 @@ namespace AI
 			SetState(HasStateType(TypeState.Work));
 		}
 
+		public void SetPointToStates(Transform pointWork, Transform pointThirst, Transform pointHungry, Transform pointDream)
+		{
+			//Сделать систему установки позиций для работника!
+		}
 
 		public void Update()
 		{

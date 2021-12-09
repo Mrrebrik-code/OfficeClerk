@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using Interactive.Things;
+using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
 using Utils;
@@ -42,7 +43,7 @@ namespace Shop
 			switch(typeProduct)
 			{
 				case TypeProduct.Burger:
-
+					BurgerStand.Instance.CookingBurgers(1);
 					break;
 			}
 

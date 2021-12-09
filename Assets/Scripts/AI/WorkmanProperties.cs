@@ -22,6 +22,7 @@ namespace AI
 			{
 				_tValue += value;
 				if (_tValue <= 0) _tValue = 0;
+				else if (_tValue > 100) _tValue = 100;
 
 				ReadyWorkman();
 				OnChange?.Invoke();
@@ -34,6 +35,7 @@ namespace AI
 			{
 				_hValue += value;
 				if (_hValue <= 0) _hValue = 0;
+				else if (_hValue > 100) _hValue = 100;
 
 				ReadyWorkman();
 				OnChange?.Invoke();
@@ -46,6 +48,7 @@ namespace AI
 			{
 				_dValue += value;
 				if (_dValue <= 0) _dValue = 0;
+				else if (_dValue > 100) _dValue = 100;
 
 				ReadyWorkman();
 				OnChange?.Invoke();
