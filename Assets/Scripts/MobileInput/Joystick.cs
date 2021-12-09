@@ -1,10 +1,9 @@
 ﻿using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.UI;
-
-public class Joystick : MonoBehaviour, IPointerDownHandler, IPointerUpHandler, IDragHandler
+using Utils;
+public class Joystick : SingletonMono<Joystick>, IPointerDownHandler, IPointerUpHandler, IDragHandler
 {
-	public static Joystick Instance;
 	public bool isPressed;
 	[SerializeField] private GameObject _joystickGameObject;
 	[SerializeField] private Image _joystick;
@@ -14,10 +13,11 @@ public class Joystick : MonoBehaviour, IPointerDownHandler, IPointerUpHandler, I
 	[Space, Header("Settings")]
 	[SerializeField] private float _magnitudeStick;
 
-	private void Awake()
+	public override void Awake()
 	{
-		Instance = this;
+		base.Awake();
 	}
+
 	public void OnDrag(PointerEventData eventData)
 	{
 		if (RectTransformUtility.ScreenPointToLocalPointInRectangle(

@@ -2,21 +2,21 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.EventSystems;
+using Utils;
 
-public class TouchField : MonoBehaviour, IPointerDownHandler, IPointerUpHandler
+public class TouchField : SingletonMono<TouchField>, IPointerDownHandler, IPointerUpHandler
 {
-    public static TouchField Instance;
     [HideInInspector] public Vector2 TouchDist;
     public bool isPressed;
     private Vector2 _pointerOld;
     private int _pointerId;
     private bool _pressed;
 
-	private void Awake()
+	public override void Awake()
 	{
-        Instance = this;
+		base.Awake();
+	}
 
-    }
 	public void OnPointerDown(PointerEventData eventData)
     {
         isPressed = true;
