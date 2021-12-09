@@ -2,7 +2,7 @@
 
 namespace Shop
 {
-	[CreateAssetMenu(fileName = "product", menuName = "Shop/Product")]
+	[CreateAssetMenu(fileName = "product", menuName = "SO/Product")]
 	public class Product : ScriptableObject
 	{
 		public TypeProduct Type;
