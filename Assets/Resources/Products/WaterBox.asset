@@ -13,7 +13,8 @@ MonoBehaviour:
   m_Name: WaterBox
   m_EditorClassIdentifier: 
   Type: 1
-  Name: 
-  Description: 
-  Price: 0
+  Name: "\u0412\u043E\u0434\u0430"
+  Description: 60
+  Price: 60
+  Sprite: {fileID: 21300000, guid: dd22967861f83dc4ea242a9de22e95fe, type: 3}
   LevelUp: 0

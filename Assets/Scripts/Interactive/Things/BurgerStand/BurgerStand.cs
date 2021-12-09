@@ -37,7 +37,7 @@ namespace Interactive.Things
 						burgers.Add(burger);
 					}
 				}
-				if (burgers != null)
+				if (burgers.Count >= count)
 				{
 
 					StartCoroutine(DelayCooking(count, burgers));
@@ -82,6 +82,7 @@ namespace Interactive.Things
 			if(burger != null)
 			{
 				_burgers.Add(burger);
+				burger.IsDone = false;
 				_doneBurgers.Remove(burger);
 				burger.gameObject.SetActive(false);
 			}
@@ -97,6 +98,7 @@ namespace Interactive.Things
 					_burgers.Add(burgerTemp);
 					_doneBurgers.Remove(burgerTemp);
 					burgerTemp.gameObject.SetActive(false);
+					burgerTemp.IsDone = false;
 					_infoBurgerStand.SetCountBurgers(_doneBurgers.Count);
 				}
 			}
