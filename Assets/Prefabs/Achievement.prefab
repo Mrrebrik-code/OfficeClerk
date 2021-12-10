@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 2494184216594661200}
   - component: {fileID: 2494184216594661215}
   m_Layer: 5
-  m_Name: Text (TMP)
+  m_Name: TargetText
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -145,7 +145,7 @@ GameObject:
   - component: {fileID: 2494184216646463415}
   - component: {fileID: 2494184216646463414}
   m_Layer: 5
-  m_Name: Image
+  m_Name: Description
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -220,7 +220,7 @@ GameObject:
   - component: {fileID: 2494184217114658020}
   - component: {fileID: 2494184217114658019}
   m_Layer: 5
-  m_Name: Text (TMP)
+  m_Name: DescriptionText
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -355,12 +355,12 @@ GameObject:
   - component: {fileID: 2494184217137142202}
   - component: {fileID: 2494184217137142201}
   m_Layer: 5
-  m_Name: Image
+  m_Name: Target
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &2494184217137142200
 RectTransform:
   m_ObjectHideFlags: 0
@@ -455,8 +455,9 @@ GameObject:
   - component: {fileID: 2494184217171414199}
   - component: {fileID: 2494184217171414185}
   - component: {fileID: 2494184217171414184}
+  - component: {fileID: 3756705487770140583}
   m_Layer: 5
-  m_Name: Image (2)
+  m_Name: Reward_btn
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -519,6 +520,49 @@ MonoBehaviour:
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 1
+--- !u!114 &3756705487770140583
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2494184217171414198}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4e29b1a8efbd4b44bb3f3716e73f07ff, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Navigation:
+    m_Mode: 3
+    m_SelectOnUp: {fileID: 0}
+    m_SelectOnDown: {fileID: 0}
+    m_SelectOnLeft: {fileID: 0}
+    m_SelectOnRight: {fileID: 0}
+  m_Transition: 1
+  m_Colors:
+    m_NormalColor: {r: 1, g: 1, b: 1, a: 1}
+    m_HighlightedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
+    m_PressedColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 1}
+    m_SelectedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
+    m_DisabledColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 0.5019608}
+    m_ColorMultiplier: 1
+    m_FadeDuration: 0.1
+  m_SpriteState:
+    m_HighlightedSprite: {fileID: 0}
+    m_PressedSprite: {fileID: 0}
+    m_SelectedSprite: {fileID: 0}
+    m_DisabledSprite: {fileID: 0}
+  m_AnimationTriggers:
+    m_NormalTrigger: Normal
+    m_HighlightedTrigger: Highlighted
+    m_PressedTrigger: Pressed
+    m_SelectedTrigger: Selected
+    m_DisabledTrigger: Disabled
+  m_Interactable: 1
+  m_TargetGraphic: {fileID: 2494184217171414184}
+  m_OnClick:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!1 &2494184217182350845
 GameObject:
   m_ObjectHideFlags: 0
@@ -531,7 +575,7 @@ GameObject:
   - component: {fileID: 2494184217182350832}
   - component: {fileID: 2494184217182350847}
   m_Layer: 5
-  m_Name: Image (1)
+  m_Name: TargetBox
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -606,7 +650,7 @@ GameObject:
   - component: {fileID: 2494184217368361470}
   - component: {fileID: 2494184217368361469}
   m_Layer: 5
-  m_Name: Text (TMP)
+  m_Name: Reward_btnText
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -739,12 +783,12 @@ GameObject:
   - component: {fileID: 2494184217437778970}
   - component: {fileID: 2494184217437778969}
   m_Layer: 5
-  m_Name: Image (1)
+  m_Name: Reward
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &2494184217437778968
 RectTransform:
   m_ObjectHideFlags: 0
@@ -813,6 +857,7 @@ GameObject:
   - component: {fileID: 2494184217717415915}
   - component: {fileID: 2494184217717415917}
   - component: {fileID: 2494184217717415916}
+  - component: {fileID: 4134391908718119504}
   m_Layer: 5
   m_Name: Achievement
   m_TagString: Untagged
@@ -879,6 +924,23 @@ MonoBehaviour:
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 1
+--- !u!114 &4134391908718119504
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2494184217717415914}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0a3b315602ecb3e4a8725e9d1e157a85, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _descriptionText: {fileID: 2494184217114658019}
+  _rewardText: {fileID: 2494184218203897722}
+  _targetText: {fileID: 2494184216594661215}
+  _buttonReward: {fileID: 2494184217437778983}
+  _buttonTarget: {fileID: 2494184217137142215}
 --- !u!1 &2494184217887745081
 GameObject:
   m_ObjectHideFlags: 0
@@ -891,7 +953,7 @@ GameObject:
   - component: {fileID: 2494184217887745084}
   - component: {fileID: 2494184217887745083}
   m_Layer: 5
-  m_Name: Image (2)
+  m_Name: RewardTargetBox
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -966,7 +1028,7 @@ GameObject:
   - component: {fileID: 2494184218203897723}
   - component: {fileID: 2494184218203897722}
   m_Layer: 5
-  m_Name: Text (TMP)
+  m_Name: RewardText
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

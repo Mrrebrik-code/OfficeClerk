@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
+using UnityEngine.UI;
 using Utils;
 
 namespace Achievement
@@ -33,7 +34,7 @@ namespace Achievement
 			{
 				AchievementHolder productHolderTemp = Instantiate(_achievementHolderPrefab, _contentAchievement);
 				productHolderTemp.SetAchievement(achievement);
-
+				productHolderTemp.UpdateTargetAchievement(0);
 				_products.Add(productHolderTemp);
 			}
 		}
