@@ -1,4 +1,5 @@
-﻿using AI;
+﻿using Achievement;
+using AI;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -74,6 +75,8 @@ namespace Interactive.Things
 				_burgers.Remove(burgers[i]);
 				_infoBurgerStand.SetCountBurgers(_doneBurgers.Count);
 				_infoBurgerStand.UpdateProgressBar(0f);
+
+				AchievementManager.Instance.DoneAchievementTarget(TypeAchievement.Burgers);
 			}
 			_cooking = false;
 		}

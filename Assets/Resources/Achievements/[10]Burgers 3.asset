@@ -13,7 +13,8 @@ MonoBehaviour:
   m_Name: '[10]Burgers 3'
   m_EditorClassIdentifier: 
   _name: Burgers_Cooking_x10
-  _description: "\u041F\u0440\u0438\u0433\u043E\u0442\u043E\u0432\u044C 10 \u0431\u0443\u0440\u0433\u0435\u0440\u043E\u0432!"
-  _target: 10
-  _reward: 50
+  _description: "\u041F\u0440\u0438\u0433\u043E\u0442\u043E\u0432\u044C 5 \u0431\u0443\u0440\u0433\u0435\u0440\u043E\u0432!"
+  _type: 0
+  _target: 5
+  _reward: 80
   _level: 1

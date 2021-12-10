@@ -8,7 +8,7 @@ namespace Achievement
 {
 	public class AchievementHolder : MonoBehaviour
 	{
-		private Achievement _achievement;
+		public Achievement Achievement { get; private set; }
 
 		[SerializeField] private TMP_Text _descriptionText;
 		[SerializeField] private TMP_Text _rewardText;
@@ -20,9 +20,9 @@ namespace Achievement
 		private int _countTargetSuccefful = 0;
 		public void SetAchievement(Achievement achievement)
 		{
-			_achievement = achievement;
+			Achievement = achievement;
 			_descriptionText.text = achievement.Description;
-			_rewardText.text = achievement.Reward.ToString() + "печенек";
+			_rewardText.text = achievement.Reward.ToString() + " печенек";
 
 			_buttonReward.SetActive(false);
 			_buttonTarget.SetActive(true);
@@ -31,15 +31,27 @@ namespace Achievement
 		public void UpdateTargetAchievement(int value)
 		{
 			_countTargetSuccefful += value;
-			_targetText.text = $"{_countTargetSuccefful}/{_achievement.Target}";
+			_targetText.text = $"{_countTargetSuccefful}/{Achievement.Target}";
 
-			if (_countTargetSuccefful >= _achievement.Target)
+			if (_countTargetSuccefful >= Achievement.Target)
 			{
-				_buttonReward.SetActive(true);
-				_buttonTarget.SetActive(false);
+				Complet();
 			}
+		}
 
-			
+		public void TakeReward()
+		{
+			//Прописать систему состояний кнопки цель-получить-получен
+			_buttonReward.SetActive(false);
+		}
+
+		public void Complet()
+		{
+			Achievement.IsDone = true;
+			AchievementManager.Instance.CompletAchievement(this);
+
+			_buttonReward.SetActive(true);
+			_buttonTarget.SetActive(false);
 		}
 	}
 }
