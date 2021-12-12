@@ -1,5 +1,6 @@
 ﻿using Achievement;
 using AI;
+using ExecutionList;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -62,6 +63,8 @@ namespace Interactive.Things
 			for (int i = 0; i < count; i++)
 			{
 				var tempProgress = 0f;
+				ExecutionsListHandler.Instance.AddExecution(TypeExecutions.BurgerCooking, 8f);
+
 				while(tempProgress != _cookingTime)
 				{
 					tempProgress += 1.2f * Time.deltaTime;
