@@ -57,7 +57,10 @@ namespace AI
 				CallBack?.Invoke();
 			}
 		}
-
+		public void SetPoint(Transform transform)
+		{
+			_positionDream = transform;
+		}
 		public void SetBedUsing(Bed bed)
 		{
 			_bed = bed;

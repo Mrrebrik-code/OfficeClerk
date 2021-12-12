@@ -18,33 +18,65 @@ namespace AI
 		public NavMeshAgent Agent { get; private set; }
 
 		public WorkmanProperties Properties { get; private set; }
+		private bool _isInit = false;
 
 
 
 		public void Start()
+		{
+			
+		}
+
+		private void Init()
 		{
 			_animator = GetComponent<Animator>();
 			Properties = new WorkmanProperties(10, 10, 10);
 			Properties.OnChange += OnChangePropertiesHandler;
 			_info.SetInfo(Properties);
 			Agent = GetComponent<NavMeshAgent>();
-			States = GetComponents<IWorkmanState>().ToList();
+			
 
 			SetState(HasStateType(TypeState.Work));
+			_isInit = true;
 		}
 
 		public void SetPointToStates(Transform pointWork, Transform pointThirst, Transform pointHungry, Transform pointDream)
 		{
+			States = GetComponents<IWorkmanState>().ToList();
 			//Сделать систему установки позиций для работника!
+			foreach (var state in States)
+			{
+				if(state is WorkState work)
+				{
+					work.SetPoint(pointWork);
+				}
+				else if(state is ThirstState thirst)
+				{
+					thirst.SetPoint(pointThirst);
+				}
+				else if (state is HungryState hungry)
+				{
+					hungry.SetPoint(pointHungry);
+				}
+				else if (state is DreamState dream)
+				{
+					dream.SetPoint(pointDream);
+				}
+			}
+			Init();
 		}
 
 		public void Update()
 		{
-			_animator.SetBool("Move", transform.position != Agent.destination);
-			if (CurrentState != null)
+			if (_isInit)
 			{
-				CurrentState.UpdateState();
+				_animator.SetBool("Move", transform.position != Agent.destination);
+				if (CurrentState != null)
+				{
+					CurrentState.UpdateState();
+				}
 			}
+			
 		}
 
 		public void OnCallBackHandler()

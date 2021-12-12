@@ -4,7 +4,8 @@
 	{
 		Workman,
 		Burger,
-		WaterBox
+		WaterBox,
+		Table
 	}
 }
 

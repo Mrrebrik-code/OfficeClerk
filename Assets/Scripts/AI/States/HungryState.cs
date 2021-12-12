@@ -48,6 +48,10 @@ namespace AI
 			}
 		}
 
+		public void SetPoint(Transform transform)
+		{
+			_positionHungry = transform;
+		}
 		public void SetBurgerStandUsing(BurgerStand burgerStand)
 		{
 			_burgerStand = burgerStand;

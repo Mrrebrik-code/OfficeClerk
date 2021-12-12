@@ -6,6 +6,7 @@ using System.Linq;
 using UnityEngine;
 using Utils;
 using Factories;
+using Core;
 
 namespace Shop
 {
@@ -51,6 +52,10 @@ namespace Shop
 				case TypeProduct.WaterBox:
 					FactoryWaterBox.Instance.Create(count);
 					DeliveryManager.Instance.SetDeliveryTarget(TypeObject.WaterBox, 1);
+					break;
+				case TypeProduct.Workman:
+					var workman = FactoryWorkmanAI.Instance.Create(1);
+					GameManager.Instance.AddWorkman(workman);
 					break;
 			}
 

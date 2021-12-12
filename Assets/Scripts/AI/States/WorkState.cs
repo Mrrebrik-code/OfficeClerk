@@ -25,6 +25,10 @@ namespace AI
 			}
 		}
 
+		public void SetPoint(Transform transform)
+		{
+			_positionWork = transform;
+		}
 		private IEnumerator Working()
 		{
 			yield return new WaitForSeconds(5f);

@@ -42,6 +42,11 @@ namespace AI
 				}
 			}
 		}
+
+		public void SetPoint(Transform transform)
+		{
+			_positionWater = transform;
+		}
 		private IEnumerator ThirstDelay()
 		{
 			yield return new WaitForSeconds(1f);
