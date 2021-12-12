@@ -1,8 +1,11 @@
-﻿using Interactive.Things;
+﻿using Interactive;
+using Interactive.Things;
+using Shop.Delivery;
 using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
 using Utils;
+using Factories;
 
 namespace Shop
 {
@@ -38,12 +41,16 @@ namespace Shop
 			}
 		}
 
-		public bool TryBuy(TypeProduct typeProduct)
+		public bool TryBuy(TypeProduct typeProduct, int count = 1)
 		{
 			switch(typeProduct)
 			{
 				case TypeProduct.Burger:
-					BurgerStand.Instance.CookingBurgers(1);
+					BurgerStand.Instance.CookingBurgers(count);
+					break;
+				case TypeProduct.WaterBox:
+					FactoryWaterBox.Instance.Create(count);
+					DeliveryManager.Instance.SetDeliveryTarget(TypeObject.WaterBox, 1);
 					break;
 			}
 

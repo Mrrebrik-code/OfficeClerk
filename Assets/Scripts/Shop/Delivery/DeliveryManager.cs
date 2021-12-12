@@ -17,11 +17,10 @@ namespace Shop.Delivery
 
 		private void Start()
 		{
-			IThings test = null;
-			SetDeliveryTarget(test, 5);
+			//SetDeliveryTarget(test, 5);
 		}
 
-		public void SetDeliveryTarget(IThings thing, int count)
+		public void SetDeliveryTarget(TypeObject thing, int count)
 		{
 			var order = new DeliveryOrder(thing, count, 10f);
 			StartCoroutine(QueueFreeCourier(order));

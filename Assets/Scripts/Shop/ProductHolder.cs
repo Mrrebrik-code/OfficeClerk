@@ -12,6 +12,7 @@ namespace Shop
 		[SerializeField] private TMP_Text _nameProductText;
 		[SerializeField] private TMP_Text _priceProductText;
 		[SerializeField] private Image _imageProduct;
+		[SerializeField] private ProductCounter _counter;
 
 
 		public void SetProduct(Product product)
@@ -24,7 +25,7 @@ namespace Shop
 
 		public void Buy()
 		{
-			ShopHandler.Instance.TryBuy(Product.Type);
+			ShopHandler.Instance.TryBuy(Product.Type, _counter.Count);
 		}
 	}
 }

@@ -14,13 +14,13 @@ namespace Shop.Delivery
 	{
 		public float TimeDelivery { get; private set; } = 10f;
 
-		public IThings Thing { get; private set; }
+		public TypeObject Thing { get; private set; }
 
 		public Vector3 Destination { get; private set; }
 
 		public bool IsDelivered { get; private set; } = false;
 
-		public DeliveryOrder(IThings thing, int count, float time)
+		public DeliveryOrder(TypeObject thing, int count, float time)
 		{
 			Thing = thing;
 			TimeDelivery = time;
