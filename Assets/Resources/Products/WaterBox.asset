@@ -17,4 +17,4 @@ MonoBehaviour:
   Description: 60
   Price: 60
   Sprite: {fileID: 21300000, guid: dd22967861f83dc4ea242a9de22e95fe, type: 3}
-  LevelUp: 0
+  LevelUp: 1
