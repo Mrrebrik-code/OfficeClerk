@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
+using Bank;
 
 namespace Achievement
 {
@@ -16,6 +17,7 @@ namespace Achievement
 
 		[SerializeField] private GameObject _buttonReward;
 		[SerializeField] private GameObject _buttonTarget;
+		[SerializeField] private GameObject _buttonComplet;
 
 		private int _countTargetSuccefful = 0;
 		public void SetAchievement(Achievement achievement)
@@ -41,8 +43,9 @@ namespace Achievement
 
 		public void TakeReward()
 		{
-			//Прописать систему состояний кнопки цель-получить-получен
+			BankManager.Instance.Cookies.Put(Achievement.Reward);
 			_buttonReward.SetActive(false);
+			_buttonComplet.SetActive(true);
 		}
 
 		public void Complet()
