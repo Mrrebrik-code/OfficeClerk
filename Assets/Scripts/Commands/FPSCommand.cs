@@ -5,7 +5,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 [Command]
-public class FPSCommand : MonoBehaviour, ICommand
+public class FPSCommand : ICommand
 {
 	private bool _isActive = false;
 	public string Name { get => "FPS"; set { } }

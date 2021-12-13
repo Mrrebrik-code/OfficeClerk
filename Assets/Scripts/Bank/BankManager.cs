@@ -16,7 +16,7 @@ namespace Bank
 		{
 			base.Awake();
 			History = new HistoryTransaction();
-			Cookies = new Cookies(100);
+			Cookies = new Cookies(400);
 			Diamonds = new Diamonds(5);
 
 			OnUpdateValueUI?.Invoke();

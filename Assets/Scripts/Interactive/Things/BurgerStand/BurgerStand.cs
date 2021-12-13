@@ -118,10 +118,11 @@ namespace Interactive.Things
 					_doneBurgers.Remove(burgerTemp);
 					burgerTemp.gameObject.SetActive(false);
 					burgerTemp.IsDone = false;
-					_infoBurgerStand.SetCountBurgers(_doneBurgers.Count);
+					
 				}
 			}
-			
+			_infoBurgerStand.SetCountBurgers(_doneBurgers.Count);
+
 		}
 	}
 }
