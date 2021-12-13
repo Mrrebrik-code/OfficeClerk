@@ -5,6 +5,7 @@ using Achievement;
 using Execution;
 using Utils;
 using AI;
+using Bank;
 
 namespace Interactive.Things
 {
@@ -48,11 +49,13 @@ namespace Interactive.Things
 				}
 				else
 				{
+					BankManager.Instance.History.UndoTransaction();
 					Debug.Log("Мы приготовили вам уже 5 гамбургеров! Нельзя готовить больше 5 штук на прилавок!");
 				}
 			}
 			else
 			{
+				BankManager.Instance.History.UndoTransaction();
 				Debug.Log("Уже готовитя гамбургеры! Пожалуйста подождите!");
 			}
 		}

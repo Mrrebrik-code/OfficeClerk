@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using Bank;
+using System.Collections;
 using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
@@ -19,13 +20,31 @@ namespace Shop
 		{
 			Product = product;
 			_nameProductText.text = product.Name;
-			_priceProductText.text = product.Price.ToString();
 			_imageProduct.sprite = product.Sprite;
+			UpdatePriceProduct();
+
+			_counter.OnUpdateCounter += UpdatePriceProduct;
+		}
+
+		private void UpdatePriceProduct()
+		{
+			_priceProductText.text = (_counter.Count * Product.Price).ToString();
 		}
 
 		public void Buy()
 		{
-			ShopHandler.Instance.TryBuy(Product.Type, _counter.Count);
+			var price = Product.Price * _counter.Count;
+			BankManager.Instance.Cookies.Withdraw(price, (callback) =>
+			{
+				if (callback)
+				{
+					ShopHandler.Instance.TryBuy(Product.Type, _counter.Count);
+				}
+				else
+				{
+					Debug.LogError("Не хватает печенек для покупки!");
+				}
+			});
 		}
 	}
 }

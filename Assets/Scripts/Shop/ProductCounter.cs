@@ -10,6 +10,7 @@ namespace Shop
 {
 	public class ProductCounter : MonoBehaviour
 	{
+		public Action OnUpdateCounter;
 		[SerializeField] private TMP_Text _countText;
 		private int _count;
 		public int Count 
@@ -23,6 +24,7 @@ namespace Shop
 				else if(_count <= 0) _count = 1;
 
 				_countText.text = _count.ToString();
+				OnUpdateCounter?.Invoke();
 			} 
 		}
 

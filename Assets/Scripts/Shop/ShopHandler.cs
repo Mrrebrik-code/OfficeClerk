@@ -7,6 +7,7 @@ using UnityEngine;
 using Utils;
 using Factories;
 using Core;
+using Bank;
 
 namespace Shop
 {
@@ -44,6 +45,7 @@ namespace Shop
 
 		public bool TryBuy(TypeProduct typeProduct, int count = 1)
 		{
+		
 			switch(typeProduct)
 			{
 				case TypeProduct.Burger:
