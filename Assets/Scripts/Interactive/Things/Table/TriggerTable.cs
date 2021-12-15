@@ -9,7 +9,7 @@ namespace Interactive.Things
 	{
 		private void OnTriggerEnter(Collider other)
 		{
-			PausedMenuHandler.Instance.OpenSettings();
+			PausedMenuHandler.Instance.OpenTableMenu();
 			gameObject.SetActive(false);
 		}
 	}

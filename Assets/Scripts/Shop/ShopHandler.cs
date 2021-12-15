@@ -15,13 +15,15 @@ namespace Shop
 	{
 		[SerializeField] private ProductHolder _productHolderPrefab;
 		[SerializeField] private Transform _contentProducts;
+		[SerializeField] private CategoryProductButton _categoryButtonPrefab;
+		[SerializeField] private ContentCategoryProduct _contentProductCategoryPrefab;
 
 		private List<ProductHolder> _products = new List<ProductHolder>();
+		private Dictionary<TypeCategoryProduct, ContentCategoryProduct> _productHolders = new Dictionary<TypeCategoryProduct, ContentCategoryProduct>();
 
 		public override void Awake()
 		{
 			base.Awake();
-			Init();
 		}
 
 		private List<Product> LoadProducts()
@@ -29,19 +31,40 @@ namespace Shop
 			return Resources.LoadAll<Product>("Products").ToList();
 		}
 
-		private void Init()
+		public void OpenCategoryShop(TypeCategoryProduct category)
 		{
+
+		}
+
+		public void Init(Transform contentButtons, Transform contentCategory)
+		{
+
 			List<Product> products = LoadProducts();
 			if (products == null) return;
 
+			var categorys = new Dictionary<TypeCategoryProduct, object[]>();
+
 			foreach (var product in products)
 			{
-				ProductHolder productHolderTemp = Instantiate(_productHolderPrefab, _contentProducts);
-				productHolderTemp.SetProduct(product);
+				var productCategory = Instantiate(_contentProductCategoryPrefab, contentCategory);
+				productCategory.gameObject.SetActive(false);
+
+				var buttonCategory = Instantiate(_categoryButtonPrefab, contentButtons);
+				buttonCategory.Init(productCategory.gameObject);
+
+				categorys.Add(product.Category, new object[2]{ productCategory, product });
+
+			}
+
+			foreach (var content in categorys.Values)
+			{
+				ProductHolder productHolderTemp = Instantiate(_productHolderPrefab, ((GameObject)content[0]).transform);
+				productHolderTemp.SetProduct(content[1] as Product);
 
 				_products.Add(productHolderTemp);
 			}
 		}
+
 
 		public bool TryBuy(TypeProduct typeProduct, int count = 1)
 		{

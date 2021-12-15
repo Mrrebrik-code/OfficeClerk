@@ -26,5 +26,6 @@ public class PausedMenu : MonoBehaviour
 	private void DeactiveObject()
 	{
 		gameObject.SetActive(false);
+		Time.timeScale = 1;
 	}
 }
