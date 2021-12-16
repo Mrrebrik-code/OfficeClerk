@@ -2,30 +2,34 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class PausedMenu : MonoBehaviour
+
+namespace Menu
 {
-	[SerializeField] private Animator _animator;
-	private bool _isShow = false;
-	public void Activate()
+	public class PausedMenu : MonoBehaviour
 	{
-		_isShow = !_isShow;
+		[SerializeField] private Animator _animator;
+		private bool _isShow = false;
+		public void Activate()
+		{
+			_isShow = !_isShow;
 
-		if (_isShow) Show();
-		else Hide();
-	}
-	private void Show()
-	{
-		_animator.SetTrigger("Show");
-	}
+			if (_isShow) Show();
+			else Hide();
+		}
+		private void Show()
+		{
+			_animator.SetTrigger("Show");
+		}
 
-	private void Hide()
-	{
-		_animator.SetTrigger("Hide");
-	}
+		private void Hide()
+		{
+			_animator.SetTrigger("Hide");
+		}
 
-	private void DeactiveObject()
-	{
-		gameObject.SetActive(false);
-		Time.timeScale = 1;
+		private void DeactiveObject()
+		{
+			gameObject.SetActive(false);
+			Time.timeScale = 1;
+		}
 	}
 }

@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 using UnityEngine;
 using Utils;
 
-namespace Handlers 
+namespace Menu 
 {
 	public class PausedMenuHandler : SingletonMono<PausedMenuHandler>
 	{

@@ -4,64 +4,61 @@ using System.Linq;
 using UnityEngine;
 using Utils;
 
-public class TableMenu : SingletonMono<TableMenu>
+namespace Menu
 {
-	[SerializeField] private GameObject _contentToPannels;
-	[SerializeField] private GameObject _contentToButtons;
-
-	[SerializeField] private ButtonTable _buttonPrefab;
-	private ButtonTable _currentButton;
-	private PanelTable _currentPanel;
-
-	[SerializeField] private List<PanelTable> _panelsMenu = new List<PanelTable>();
-
-
-	private Dictionary<PanelTable, ButtonTable> _menus = new Dictionary<PanelTable, ButtonTable>();
-
-	public override void Awake()
+	public class TableMenu : SingletonMono<TableMenu>
 	{
-		base.Awake();
-		Init();
-	}
+		[SerializeField] private GameObject _contentToPannels;
+		[SerializeField] private GameObject _contentToButtons;
 
-	private void Init()
-	{
-		foreach (var menu in _panelsMenu)
+		[SerializeField] private ButtonTable _buttonPrefab;
+		private ButtonTable _currentButton;
+		private PanelTable _currentPanel;
+
+		[SerializeField] private List<PanelTable> _panelsMenu = new List<PanelTable>();
+
+
+		private Dictionary<PanelTable, ButtonTable> _menus = new Dictionary<PanelTable, ButtonTable>();
+
+		public override void Awake()
 		{
-			var button = Instantiate(_buttonPrefab, _contentToButtons.transform);
-			button.Init(menu);
-
-			_menus.Add(menu, button);
+			base.Awake();
+			Init();
 		}
-	}
-	public void Open(PanelTable menu)
-	{
-		
-		if(_currentButton != null && _currentPanel != null)
+
+		private void Init()
 		{
-			if (_currentPanel = menu)
+			foreach (var menu in _panelsMenu)
 			{
-				_currentButton.SelectedSwitch();
-				_currentButton = null;
+				var button = Instantiate(_buttonPrefab, _contentToButtons.transform);
+				button.Init(menu);
 
-				_currentPanel.gameObject.SetActive(false);
-				_currentPanel = null;
-				return;
+				_menus.Add(menu, button);
 			}
-			_currentButton.SelectedSwitch();
-			_currentPanel.gameObject.SetActive(false);
 		}
+		public void Open(PanelTable menu)
+		{
 
-		var button = _menus[menu];
-		button.SelectedSwitch();
-		menu.gameObject.SetActive(true);
-		_currentPanel = menu;
-		_currentButton = button;
-/*		var panelTemp = (GameObject)_menus[menu][0];
-		panelTemp.SetActive(true);
-		_currentPanel = panelTemp;
-		var buttonTemp = (ButtonTable)_menus[menu][1];
-		_currentButton = buttonTemp;
-		buttonTemp.SelectedSwitch();*/
+			if (_currentButton != null && _currentPanel != null)
+			{
+				if (_currentPanel = menu)
+				{
+					_currentButton.SelectedSwitch();
+					_currentButton = null;
+
+					_currentPanel.gameObject.SetActive(false);
+					_currentPanel = null;
+					return;
+				}
+				_currentButton.SelectedSwitch();
+				_currentPanel.gameObject.SetActive(false);
+			}
+
+			var button = _menus[menu];
+			button.SelectedSwitch();
+			menu.gameObject.SetActive(true);
+			_currentPanel = menu;
+			_currentButton = button;
+		}
 	}
 }

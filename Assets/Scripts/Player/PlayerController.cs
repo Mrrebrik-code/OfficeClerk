@@ -8,7 +8,6 @@ namespace Player
 	{
 		private NavMeshAgent _agent;
 		private Animator _animator;
-		private Rigidbody _regedbody;
 		private Camera _camera;
 
 		public bool IsHitMove = true;
@@ -21,7 +20,6 @@ namespace Player
 			_camera = Camera.main;
 			_animator = GetComponent<Animator>();
 			_agent = GetComponent<NavMeshAgent>();
-			_regedbody = GetComponent<Rigidbody>();
 		}
 
 		private void Update()

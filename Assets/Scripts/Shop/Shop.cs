@@ -1,4 +1,4 @@
-﻿using System.Collections;
+﻿using Menu;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -7,13 +7,13 @@ namespace Shop
 	public class Shop : PanelTable
 	{
 		[SerializeField] private ProductHolder _productHolderPrefab;
-		[SerializeField] private CategoryProductButton _buttonCategotyPrefab;
-		[SerializeField] private ContentCategoryProduct _contentCategotyPrefab;
+		[SerializeField] private ButtonProductCategory _buttonCategotyPrefab;
+		[SerializeField] private ContentProductCategory _contentCategotyPrefab;
 
 		[SerializeField] private GameObject _contentCategorys;
 		[SerializeField] private GameObject _contentButtons;
 
-		private Dictionary<TypeCategoryProduct, ContentCategoryProduct> _categorys = new Dictionary<TypeCategoryProduct, ContentCategoryProduct>();
+		private Dictionary<TypeCategoryProduct, ContentProductCategory> _categorys = new Dictionary<TypeCategoryProduct, ContentProductCategory>();
 		public List<ProductHolder> Init(Dictionary<TypeCategoryProduct, List<Product>> categorys)
 		{
 			Dictionary<TypeCategoryProduct, object[]> categorysProduct = new Dictionary<TypeCategoryProduct, object[]>();
@@ -34,10 +34,10 @@ namespace Shop
 				foreach (var categoryProduct in categoryProducts)
 				{
 					var content = categorysProduct[categoryProduct.Category][0];
-					var button = categorysProduct[categoryProduct.Category][1] as CategoryProductButton;
+					var button = categorysProduct[categoryProduct.Category][1] as ButtonProductCategory;
 					button.OnClick += OpenCatalog;
 
-					ProductHolder productHolderTemp = Instantiate(_productHolderPrefab, ((ContentCategoryProduct)content).transform);
+					ProductHolder productHolderTemp = Instantiate(_productHolderPrefab, ((ContentProductCategory)content).transform);
 					productHolderTemp.SetProduct(categoryProduct);
 
 					products.Add(productHolderTemp);

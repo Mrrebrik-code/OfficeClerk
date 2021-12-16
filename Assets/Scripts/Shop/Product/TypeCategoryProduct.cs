@@ -2,9 +2,12 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public enum TypeCategoryProduct
+namespace Shop
 {
-	Eat,
-	Workman,
-	Office,
+	public enum TypeCategoryProduct
+	{
+		Eat,
+		Workman,
+		Office,
+	}
 }
