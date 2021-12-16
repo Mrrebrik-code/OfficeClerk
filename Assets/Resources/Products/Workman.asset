@@ -12,6 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3e3547f3d0f61494caa60ecfacdd4993, type: 3}
   m_Name: Workman
   m_EditorClassIdentifier: 
+  Category: 1
   Type: 0
   Name: "\u0420\u0430\u0431\u043E\u0447\u0438\u0439"
   Description: 300

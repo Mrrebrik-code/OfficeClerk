@@ -4,5 +4,5 @@ using UnityEngine;
 
 public class ContentCategoryProduct : MonoBehaviour
 {
-
+	[SerializeField] private TypeCategoryProduct _type;
 }
