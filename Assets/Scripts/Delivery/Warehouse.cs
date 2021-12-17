@@ -6,8 +6,6 @@ using UnityEngine;
 public class Warehouse : PanelTable
 {
 
-
-
 	public void Delivery()
 	{
 

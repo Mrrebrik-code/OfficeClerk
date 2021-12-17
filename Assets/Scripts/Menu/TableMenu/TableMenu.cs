@@ -41,7 +41,7 @@ namespace Menu
 
 			if (_currentButton != null && _currentPanel != null)
 			{
-				if (_currentPanel = menu)
+				if (_currentPanel.Name == menu.Name)
 				{
 					_currentButton.SelectedSwitch();
 					_currentButton = null;
