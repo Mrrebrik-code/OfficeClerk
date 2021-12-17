@@ -12,8 +12,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ed1b162fcea97fe49acc5e78c923d732, type: 3}
   m_Name: '[10]Burgers 1'
   m_EditorClassIdentifier: 
-  _name: Burgers_Cooking_x10
-  _description: "\u041F\u0440\u0438\u0433\u043E\u0442\u043E\u0432\u044C 10 \u0431\u0443\u0440\u0433\u0435\u0440\u043E\u0432!"
+  _name: "3 \u0431\u0443\u0440\u0433\u0435\u0440\u0430 \u0438\u0437\u0433\u043E\u0442\u043E\u0432\u043B\u0435\u043D\u044B"
+  _description: "\u041F\u0440\u0438\u0433\u043E\u0442\u043E\u0432\u044C 3 \u0431\u0443\u0440\u0433\u0435\u0440\u043E\u0432!"
+  _rewardInfo: "\u0417\u0430\u0431\u0435\u0440\u0438\u0442\u0435 50 \u043F\u0435\u0447\u0435\u043D\u0435\u043A"
   _type: 0
   _target: 3
   _reward: 50

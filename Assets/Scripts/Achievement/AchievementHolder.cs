@@ -60,6 +60,7 @@ namespace Achievement
 		public void Complet()
 		{
 			Achievement.IsDone = true;
+			PushHandler.Instance.AddNotification(Achievement);
 			AchievementManager.Instance.CompletAchievement(this);
 
 			_buttonReward.SetActive(true);
