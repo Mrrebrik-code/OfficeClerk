@@ -4,5 +4,6 @@ using UnityEngine;
 
 public enum TypePopup
 {
-	NoMoney
+	NoMoney,
+	Achievement
 }

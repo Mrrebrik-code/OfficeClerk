@@ -11,8 +11,8 @@ GameObject:
   - component: {fileID: 738193456804001493}
   - component: {fileID: 738193456804001494}
   - component: {fileID: 738193456804001495}
-  - component: {fileID: 738193456804001492}
   - component: {fileID: 6700764323374329538}
+  - component: {fileID: 7482378087614142782}
   m_Layer: 5
   m_Name: Content [Eat]
   m_TagString: Untagged
@@ -76,19 +76,6 @@ MonoBehaviour:
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 1
---- !u!114 &738193456804001492
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 738193456804001490}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 742003de0b645124b919178f4fa42c6b, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _type: 0
 --- !u!114 &6700764323374329538
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -113,3 +100,16 @@ MonoBehaviour:
   m_Spacing: {x: 0, y: 0}
   m_Constraint: 0
   m_ConstraintCount: 2
+--- !u!114 &7482378087614142782
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 738193456804001490}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fa3fd63035ffb7a47908d540fe73f733, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _type: 0

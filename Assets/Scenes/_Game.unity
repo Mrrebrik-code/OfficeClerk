@@ -1520,7 +1520,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
   m_Color: {r: 1, g: 1, b: 1, a: 0}
-  m_RaycastTarget: 1
+  m_RaycastTarget: 0
   m_Maskable: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
@@ -23059,7 +23059,7 @@ MonoBehaviour:
     type: 3}
   _buttonCategotyPrefab: {fileID: 840562975758532808, guid: a06d66b89d093284497a6f672d10ac7b,
     type: 3}
-  _contentCategotyPrefab: {fileID: 738193456804001492, guid: 3c9ba5721a11f66499e1d643fbbc3a34,
+  _contentCategotyPrefab: {fileID: 7482378087614142782, guid: 3c9ba5721a11f66499e1d643fbbc3a34,
     type: 3}
   _contentCategorys: {fileID: 2827159248394323783}
   _contentButtons: {fileID: 551993345195845477}

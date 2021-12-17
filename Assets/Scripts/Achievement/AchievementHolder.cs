@@ -19,10 +19,14 @@ namespace Achievement
 		[SerializeField] private GameObject _buttonTarget;
 		[SerializeField] private GameObject _buttonComplet;
 
+		private Popup _popupDescrition;
+
 		private int _countTargetSuccefful = 0;
 		public void SetAchievement(Achievement achievement)
 		{
 			Achievement = achievement;
+			_popupDescrition = new Popup(achievement.Description, TypeCategoryPopup.Info, TypePopup.Achievement);
+
 			_descriptionText.text = achievement.Description;
 			_rewardText.text = achievement.Reward.ToString() + " печенек";
 
@@ -39,6 +43,11 @@ namespace Achievement
 			{
 				Complet();
 			}
+		}
+
+		public void ShowDescriptionPopup()
+		{
+			PopupHandler.Instance.ShowPopup(_popupDescrition);
 		}
 
 		public void TakeReward()
