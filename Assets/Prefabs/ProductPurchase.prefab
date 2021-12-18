@@ -501,6 +501,7 @@ GameObject:
   - component: {fileID: 7714291131017933363}
   - component: {fileID: 7714291131017933373}
   - component: {fileID: 7714291131017933372}
+  - component: {fileID: 6253111005636902626}
   m_Layer: 5
   m_Name: ProductPurchase
   m_TagString: Untagged
@@ -567,3 +568,18 @@ MonoBehaviour:
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 1
+--- !u!114 &6253111005636902626
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7714291131017933362}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1c3bf1f890a56b04e9b76e1fa92923b4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _image: {fileID: 7714291130811649571}
+  _priceText: {fileID: 7714291130988660880}
+  _countText: {fileID: 7714291129876164656}
