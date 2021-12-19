@@ -73,6 +73,7 @@ namespace Interactive.Things
 				else
 				{
 					Value -= 20;
+					Player.PlayerController.Instance.Properties.ThirstValue = 100;
 				}
 				if(Value <= 0)
 				{

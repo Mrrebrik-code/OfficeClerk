@@ -4834,6 +4834,7 @@ GameObject:
   - component: {fileID: 335948573}
   - component: {fileID: 335948572}
   - component: {fileID: 335948571}
+  - component: {fileID: 335948574}
   m_Layer: 5
   m_Name: Properties
   m_TagString: Untagged
@@ -4925,6 +4926,21 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 335948569}
   m_CullTransparentMesh: 0
+--- !u!114 &335948574
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 335948569}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 97cd2b9cb1dab6c45b4d64f6190ec47a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _thirstSlider: {fileID: 486919966}
+  _hungrySlider: {fileID: 682362044}
+  _dreamSlider: {fileID: 1314966715}
 --- !u!1 &344939520
 GameObject:
   m_ObjectHideFlags: 0
@@ -6968,9 +6984,9 @@ MonoBehaviour:
   m_HandleRect: {fileID: 0}
   m_Direction: 0
   m_MinValue: 0
-  m_MaxValue: 1
+  m_MaxValue: 100
   m_WholeNumbers: 0
-  m_Value: 1
+  m_Value: 100
   m_OnValueChanged:
     m_PersistentCalls:
       m_Calls: []
@@ -9046,9 +9062,9 @@ MonoBehaviour:
   m_HandleRect: {fileID: 0}
   m_Direction: 0
   m_MinValue: 0
-  m_MaxValue: 1
+  m_MaxValue: 100
   m_WholeNumbers: 0
-  m_Value: 1
+  m_Value: 100
   m_OnValueChanged:
     m_PersistentCalls:
       m_Calls: []
@@ -19183,9 +19199,9 @@ MonoBehaviour:
   m_HandleRect: {fileID: 0}
   m_Direction: 0
   m_MinValue: 0
-  m_MaxValue: 1
+  m_MaxValue: 100
   m_WholeNumbers: 0
-  m_Value: 1
+  m_Value: 100
   m_OnValueChanged:
     m_PersistentCalls:
       m_Calls: []
@@ -30733,6 +30749,11 @@ PrefabInstance:
       propertyPath: m_Layer
       value: 2
       objectReference: {fileID: 0}
+    - target: {fileID: 2566326608460947552, guid: 1c9e064788397a24a9d9936f38ef9631,
+        type: 3}
+      propertyPath: _infoPropertiesUI
+      value: 
+      objectReference: {fileID: 335948574}
     - target: {fileID: 2566326608460947553, guid: 1c9e064788397a24a9d9936f38ef9631,
         type: 3}
       propertyPath: m_Name

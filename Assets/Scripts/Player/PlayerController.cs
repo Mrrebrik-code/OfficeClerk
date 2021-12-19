@@ -1,4 +1,5 @@
 ﻿using AI;
+using System;
 using System.Collections;
 using UnityEngine;
 using UnityEngine.AI;
@@ -15,24 +16,32 @@ namespace Player
 		public bool IsHitMove = true;
 		public GameObject WaterBox;
 
-		private WorkmanProperties _properties;
-
+		public WorkmanProperties Properties;
+		[SerializeField] private UIPropertiesInfo _infoPropertiesUI;
 		public override void Awake()
 		{
 			base.Awake();
-			_properties = new WorkmanProperties(100, 100, 100);
+			Properties = new WorkmanProperties(100, 100, 100);
+			Properties.OnChange += ChandePropertiesHandler;
+			StartCoroutine(PropertiesHolder());
 			_camera = Camera.main;
 			_animator = GetComponent<Animator>();
 			_agent = GetComponent<NavMeshAgent>();
+		}
+
+		private void ChandePropertiesHandler()
+		{
+			_infoPropertiesUI.SetProperties(Properties);
 		}
 
 		private IEnumerator PropertiesHolder()
 		{
 			while (true)
 			{
-				_properties.ThirstValue = -1;
-				_properties.HungryValue = -1;
-				_properties.DreamValue = -1;
+				yield return new WaitForSeconds(8f);
+				Properties.ThirstValue = -4;
+				Properties.HungryValue = -5;
+				Properties.DreamValue = -3;
 				yield return null;
 			}
 		}

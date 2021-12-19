@@ -1,4 +1,5 @@
-﻿using System;
+﻿using AI;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -13,5 +14,13 @@ namespace Player
 		[SerializeField] private Slider _thirstSlider;
 		[SerializeField] private Slider _hungrySlider;
 		[SerializeField] private Slider _dreamSlider;
+
+
+		public void SetProperties(WorkmanProperties properties)
+		{
+			_thirstSlider.value = properties.ThirstValue;
+			_hungrySlider.value = properties.HungryValue;
+			_dreamSlider.value = properties.DreamValue;
+		}
 	}
 }

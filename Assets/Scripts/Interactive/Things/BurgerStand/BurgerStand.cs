@@ -104,6 +104,7 @@ namespace Interactive.Things
 				burger.IsDone = false;
 				_doneBurgers.Remove(burger);
 				burger.gameObject.SetActive(false);
+				Player.PlayerController.Instance.Properties.HungryValue = 100;
 			}
 			else
 			{
