@@ -11,10 +11,27 @@ public class PurchaseManager : SingletonMono<PurchaseManager>
 
 	[SerializeField] private ProductPurchaseHolder _purchaseHolderPrefab;
 	private Dictionary<PurchaseProduct, ProductPurchaseHolder> _purchases = new Dictionary<PurchaseProduct, ProductPurchaseHolder>();
+
+	[SerializeField] private PurchaseMenu _purchaseMenu;
 	private void Start()
 	{
 		Init();
 	}
+
+	public void Open(TypePurchaseMenu type)
+	{
+		_purchaseMenu.gameObject.SetActive(true);
+		switch (type)
+		{
+			case TypePurchaseMenu.Cookies:
+				_purchaseMenu.OpenCookiesPurchase();
+				break;
+			case TypePurchaseMenu.Diamonds:
+				_purchaseMenu.OpenDiamondsPurchase();
+				break;
+		}
+	}
+
 	private List<PurchaseProduct> LoadPurchases()
 	{
 		return Resources.LoadAll<PurchaseProduct>("Purchase").ToList();

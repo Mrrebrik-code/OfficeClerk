@@ -17,6 +17,6 @@ public class ProductPurchaseHolder : MonoBehaviour
 	}
 	public void Buy()
 	{
-
+		PurchaseManager.Instance.BuyProduct(_purchase);
 	}
 }

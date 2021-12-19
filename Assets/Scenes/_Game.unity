@@ -5176,6 +5176,7 @@ MonoBehaviour:
   _diamondsContent: {fileID: 279356996}
   _purchaseHolderPrefab: {fileID: 6253111005636902626, guid: ae3b64c63ccd71f45a25923b3b357e2f,
     type: 3}
+  _purchaseMenu: {fileID: 518709003}
 --- !u!4 &384830701
 Transform:
   m_ObjectHideFlags: 0
@@ -7463,13 +7464,14 @@ GameObject:
   - component: {fileID: 518709000}
   - component: {fileID: 518709002}
   - component: {fileID: 518709001}
+  - component: {fileID: 518709003}
   m_Layer: 5
   m_Name: Purchase
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &518709000
 RectTransform:
   m_ObjectHideFlags: 0
@@ -7527,6 +7529,21 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 518708999}
   m_CullTransparentMesh: 0
+--- !u!114 &518709003
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 518708999}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3126434ea976a8142af5f049aad756ee, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _diamondMenu: {fileID: 1133646112}
+  _cookiesMenu: {fileID: 1048084738}
+  _namePanelText: {fileID: 102732210}
 --- !u!1 &522764683
 GameObject:
   m_ObjectHideFlags: 0
@@ -14582,6 +14599,7 @@ GameObject:
   - component: {fileID: 1045035044}
   - component: {fileID: 1045035043}
   - component: {fileID: 1045035042}
+  - component: {fileID: 1045035045}
   m_Layer: 5
   m_Name: AddCookies (1)
   m_TagString: Untagged
@@ -14689,6 +14707,19 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1045035040}
   m_CullTransparentMesh: 0
+--- !u!114 &1045035045
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1045035040}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0766337f79692ff4b8ed7f2efb09b4ed, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _type: 0
 --- !u!1 &1048084738
 GameObject:
   m_ObjectHideFlags: 0
@@ -24316,6 +24347,7 @@ GameObject:
   - component: {fileID: 1748507308}
   - component: {fileID: 1748507307}
   - component: {fileID: 1748507306}
+  - component: {fileID: 1748507309}
   m_Layer: 5
   m_Name: AddCookies
   m_TagString: Untagged
@@ -24423,6 +24455,19 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1748507304}
   m_CullTransparentMesh: 0
+--- !u!114 &1748507309
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1748507304}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0766337f79692ff4b8ed7f2efb09b4ed, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _type: 1
 --- !u!1 &1766813335
 GameObject:
   m_ObjectHideFlags: 0
