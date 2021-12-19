@@ -9,7 +9,6 @@ public class CameraMover : MonoBehaviour
 	private float _xRot;
 	private float _xPos, _zPos;
 	private float _yPositionCamera = 7f;
-	[SerializeField] private float _speed;
 	[SerializeField] private bool _isMobile;
 	private void Start()
 	{
@@ -27,16 +26,16 @@ public class CameraMover : MonoBehaviour
 		}
 		else
 		{
-			_yPositionCamera -= Input.GetAxis("Mouse ScrollWheel") * Time.deltaTime * 220f;
+			_yPositionCamera -= Input.GetAxis("Mouse ScrollWheel") * Time.deltaTime * Configurator.Instance.Data.SpeedScrollCamera;
 
 			_xPos += Input.GetAxis("Horizontal");
 			_zPos += Input.GetAxis("Vertical");
 		}
-		_yPositionCamera = Mathf.Clamp(_yPositionCamera, 4f, 10f);
+		_yPositionCamera = Mathf.Clamp(_yPositionCamera, Configurator.Instance.Data.MinPositionCamera, Configurator.Instance.Data.MaxPositionCamera);
 
 
 		
 
-		_transform.localPosition = new Vector3(-_xPos * _speed, _yPositionCamera, -_zPos * _speed);
+		_transform.localPosition = new Vector3(-_xPos * Configurator.Instance.Data.SpeedMoveCamera, _yPositionCamera, -_zPos * Configurator.Instance.Data.SpeedMoveCamera);
 	}
 }

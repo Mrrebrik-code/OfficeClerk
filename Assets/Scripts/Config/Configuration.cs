@@ -9,6 +9,7 @@ public class Configuration : ScriptableObject
 	public int CountCookiesStart;
 	public int CountDiamondStart;
 
+
 	[Header("Баланс игры:"), Space]
 	[Tooltip("[ЖАЖДА] Значение, которое отнимается у рабочих, когда они работают")]
 	public int ThirstValue;
@@ -16,5 +17,18 @@ public class Configuration : ScriptableObject
 	public int HungryValue;
 	[Tooltip("[УСТАЛОСТЬ] Значение, которое отнимается у рабочих, когда они работают")]
 	public int DreamValue;
+
+	[Header("Настройки камеры:"), Space]
+	[Tooltip("Скорость перемещение камеры")]
+	public float SpeedMoveCamera;
+	[Tooltip("Скорость камеры, когда мы скроллом мышки подымаем или опускаем")]
+	public float SpeedScrollCamera;
+	[Tooltip("На какой высоте будет камера при старте игры")]
+	public float StartPositionYCamera;
+	[Tooltip("Максимальная высота на которую можно поднять камеру")]
+	public float MaxPositionCamera;
+	[Tooltip("Минимальная высота на которую можно опустить камеру")]
+	public float MinPositionCamera;
+
 
 }
