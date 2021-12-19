@@ -1,5 +1,4 @@
 ﻿using System;
-using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
@@ -20,13 +19,7 @@ namespace AI
 		public WorkmanProperties Properties { get; private set; }
 		private bool _isInit = false;
 
-
-
-		public void Start()
-		{
-			
-		}
-
+		public void Start() {}
 		private void Init()
 		{
 			_animator = GetComponent<Animator>();
@@ -34,7 +27,6 @@ namespace AI
 			Properties.OnChange += OnChangePropertiesHandler;
 			_info.SetInfo(Properties);
 			Agent = GetComponent<NavMeshAgent>();
-			
 
 			SetState(HasStateType(TypeState.Work));
 			_isInit = true;
@@ -76,7 +68,6 @@ namespace AI
 					CurrentState.UpdateState();
 				}
 			}
-			
 		}
 
 		public void OnCallBackHandler()

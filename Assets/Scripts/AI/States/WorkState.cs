@@ -1,8 +1,6 @@
 ﻿using System;
 using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.AI;
 
 
 namespace AI
@@ -39,6 +37,7 @@ namespace AI
 				AI.Properties.ThirstValue = -Configurator.Instance.Data.ThirstValue;
 				AI.Properties.HungryValue = -Configurator.Instance.Data.HungryValue;
 				AI.Properties.DreamValue = -Configurator.Instance.Data.DreamValue;
+				Bank.BankManager.Instance.Cookies.Put(1);
 			}
 			else
 			{

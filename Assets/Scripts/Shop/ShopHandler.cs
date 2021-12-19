@@ -7,7 +7,6 @@ using UnityEngine;
 using Utils;
 using Factories;
 using Core;
-using Bank;
 
 namespace Shop
 {
@@ -72,7 +71,6 @@ namespace Shop
 			}
 			_shop.Init(_products);
 		}
-
 
 		public bool TryBuy(TypeProduct typeProduct, int count = 1)
 		{

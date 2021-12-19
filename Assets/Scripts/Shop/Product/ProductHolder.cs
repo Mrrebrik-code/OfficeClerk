@@ -13,7 +13,6 @@ namespace Shop
 		[SerializeField] private Image _imageProduct;
 		[SerializeField] private ProductCounter _counter;
 
-
 		public void SetProduct(Product product)
 		{
 			Product = product;

@@ -1,8 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using UnityEngine;
 using Utils;
 
@@ -20,7 +17,6 @@ namespace Execution
 			{
 				_dictionaryExecutionsIcon.Add(execution.Type, execution);
 			});
-
 		}
 		public void AddExecution(TypeExecutions type, float time)
 		{

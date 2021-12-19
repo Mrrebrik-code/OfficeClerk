@@ -12,11 +12,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 960d348651b29a24fa24425c720b8416, type: 3}
   m_Name: Config
   m_EditorClassIdentifier: 
-  CountCookiesStart: 320
-  CountDiamondStart: 10
-  ThirstValue: 4
-  HungryValue: 8
-  DreamValue: 2
+  CountCookiesStart: 160
+  CountDiamondStart: 20
+  ThirstValue: 2
+  HungryValue: 4
+  DreamValue: 1
   SpeedMoveCamera: 0.15
   SpeedScrollCamera: 220
   StartPositionYCamera: 7

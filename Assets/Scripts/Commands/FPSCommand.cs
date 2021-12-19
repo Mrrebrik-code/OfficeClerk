@@ -1,8 +1,5 @@
 ﻿using Itibsoft.ConsoleDeveloper.Core;
 using Itibsoft.ConsoleDeveloper.Utils;
-using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
 
 [Command]
 public class FPSCommand : ICommand

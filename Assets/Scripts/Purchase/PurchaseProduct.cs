@@ -1,6 +1,4 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 
 [CreateAssetMenu(fileName = "Purchase", menuName = "SO/Purchase")]
 public class PurchaseProduct : ScriptableObject

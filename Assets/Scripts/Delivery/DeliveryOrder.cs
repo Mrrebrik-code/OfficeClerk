@@ -1,9 +1,5 @@
 ﻿using Interactive;
 using System;
-using System.Collections;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
 using UnityEngine;
@@ -13,11 +9,8 @@ namespace Shop.Delivery
 	public class DeliveryOrder : IDelivery
 	{
 		public float TimeDelivery { get; private set; } = 10f;
-
 		public TypeObject Thing { get; private set; }
-
 		public Vector3 Destination { get; private set; }
-
 		public bool IsDelivered { get; private set; } = false;
 
 		public DeliveryOrder(TypeObject thing, int count, float time)

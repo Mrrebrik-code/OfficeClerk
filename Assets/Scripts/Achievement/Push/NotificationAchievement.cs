@@ -1,11 +1,6 @@
 ﻿using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
-using DG.Tweening;
-using UnityEngine.UI;
 using TMPro;
-using Utils;
-using Achievement;
 using System;
 
 public class NotificationAchievement : MonoBehaviour
@@ -27,7 +22,7 @@ public class NotificationAchievement : MonoBehaviour
 	private IEnumerator Delay(float time)
 	{
 		yield return new WaitForSeconds(_time * 2f + time);
-		_canvasGroup.DOFade(0, _time);
+		_canvasGroup.DOFade(0, 3f);
 		yield return new WaitForSeconds(_time);
 		_onDestroy?.Invoke();
 		DestroyImmediate(gameObject);

@@ -1,6 +1,4 @@
 ﻿using AI;
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class TableWorkman : MonoBehaviour
@@ -9,8 +7,6 @@ public class TableWorkman : MonoBehaviour
 	private WorkmanAI _worknam;
 	public bool IsFree = true;
 	public bool IsBuy = false;
-
-
 
 	public Transform GetPoint()
 	{

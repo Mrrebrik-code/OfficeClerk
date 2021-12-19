@@ -1,5 +1,4 @@
-﻿
-public enum TypePurchase
+﻿public enum TypePurchase
 {
 	Cookie,
 	Diamond

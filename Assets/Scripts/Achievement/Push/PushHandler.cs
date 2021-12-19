@@ -1,7 +1,6 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using DG.Tweening;
 using Utils;
 
 public class PushHandler : SingletonMono<PushHandler>
@@ -58,9 +57,9 @@ public class PushHandler : SingletonMono<PushHandler>
 				var startPosition = new Vector2(_positionStart.GetPosition().x - 1000, _positionStart.GetPosition().y);
 				notificaion.GetComponent<RectTransform>().anchoredPosition = startPosition;
 
-				notificaion.GetComponent<RectTransform>().DOAnchorPos(_positionStart.GetPosition(), 1f);
+				notificaion.GetComponent<RectTransform>().anchoredPosition = _positionStart.GetPosition();
 				yield return new WaitForSeconds(1f);
-				notificaion.GetComponent<RectTransform>().DOAnchorPos(position.GetPosition(), 1f);
+				notificaion.GetComponent<RectTransform>().anchoredPosition = position.GetPosition();
 				yield break;
 			}
 		}

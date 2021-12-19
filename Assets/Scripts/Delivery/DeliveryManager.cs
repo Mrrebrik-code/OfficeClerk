@@ -1,10 +1,5 @@
 ﻿using Interactive;
-using System;
 using System.Collections;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using UnityEngine;
 using Utils;
 
@@ -17,7 +12,6 @@ namespace Shop.Delivery
 
 		private void Start()
 		{
-			//SetDeliveryTarget(test, 5);
 		}
 
 		public void SetDeliveryTarget(TypeObject thing, int count)

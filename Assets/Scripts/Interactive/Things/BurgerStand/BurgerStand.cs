@@ -17,7 +17,6 @@ namespace Interactive.Things
 		private List<Burger> _doneBurgers = new List<Burger>();
 		private bool _cooking = false;
 
-
 		public override void Awake()
 		{
 			base.Awake();
@@ -44,7 +43,6 @@ namespace Interactive.Things
 				}
 				if (burgers.Count >= count)
 				{
-
 					StartCoroutine(DelayCooking(count, burgers));
 				}
 				else
@@ -119,11 +117,9 @@ namespace Interactive.Things
 					_doneBurgers.Remove(burgerTemp);
 					burgerTemp.gameObject.SetActive(false);
 					burgerTemp.IsDone = false;
-					
 				}
 			}
 			_infoBurgerStand.SetCountBurgers(_doneBurgers.Count);
-
 		}
 	}
 }

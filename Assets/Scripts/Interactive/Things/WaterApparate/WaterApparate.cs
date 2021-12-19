@@ -1,7 +1,4 @@
 ﻿using Player;
-using System;
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 
@@ -11,10 +8,9 @@ namespace Interactive.Things
 	{
 		[SerializeField] private WaterBox _waterBox;
 		public WaterBox WaterBox { get { return _waterBox; } }
-
 		private bool _isWaterBox = false;
-
 		public TypeObject Type { get; set; }
+
 		private void Awake()
 		{
 			_waterBox.OnWaterBoxOut += OnWaterBoxOutHandler;

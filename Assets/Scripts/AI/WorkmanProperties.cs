@@ -1,8 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace AI
 {
@@ -54,14 +50,11 @@ namespace AI
 				OnChange?.Invoke();
 			}
 		}
-
 		private void ReadyWorkman()
 		{
 			if (_tValue > 0 && _hValue > 0 && _dValue > 0) IsReady = true;
 			else IsReady = false;
 		}
-
-
 		public WorkmanProperties(float tValue, float hValue, float dValue)
 		{
 			ThirstValue = tValue;
