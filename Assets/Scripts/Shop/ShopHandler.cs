@@ -88,6 +88,9 @@ namespace Shop
 					var workman = FactoryWorkmanAI.Instance.Create(1);
 					GameManager.Instance.AddWorkman(workman);
 					break;
+				case TypeProduct.Table:
+					GameManager.Instance.AddTable();
+					break;
 			}
 
 			return true;

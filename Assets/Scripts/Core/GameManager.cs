@@ -31,6 +31,20 @@ namespace Core
 			}
 			Debug.Log("Добавлен новый работник в штаб!");
 		}
+
+		public void AddTable()
+		{
+			foreach (var table in _tablesWorkman)
+			{
+				if(table.IsBuy == false)
+				{
+					table.gameObject.SetActive(true);
+					table.IsBuy = true;
+					return;
+				}
+			}
+			Bank.BankManager.Instance.History.UndoTransaction();
+		}
 	}
 }
 
