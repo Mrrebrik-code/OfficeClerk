@@ -57,9 +57,11 @@ public class PushHandler : SingletonMono<PushHandler>
 				var startPosition = new Vector2(_positionStart.GetPosition().x - 1000, _positionStart.GetPosition().y);
 				notificaion.GetComponent<RectTransform>().anchoredPosition = startPosition;
 
-				notificaion.GetComponent<RectTransform>().anchoredPosition = _positionStart.GetPosition();
-				yield return new WaitForSeconds(1f);
-				notificaion.GetComponent<RectTransform>().anchoredPosition = position.GetPosition();
+				notificaion.GetComponent<RectTransform>().Move(_positionStart.GetPosition(), 2f, () => 
+				{
+					notificaion.GetComponent<RectTransform>().Move(position.GetPosition(), 2f, () => {  });
+				});
+				
 				yield break;
 			}
 		}

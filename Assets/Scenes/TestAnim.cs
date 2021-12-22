@@ -15,13 +15,6 @@ public class TestAnim : MonoBehaviour
         {
 
             StartCoroutine(Delay());
-           
-
-
-/*            _canvasGroup.Fade(1, 0.8f, ()=>
-            {
-                Debug.LogError("Анимации закончены!");
-            });*/
         });
     }
 
