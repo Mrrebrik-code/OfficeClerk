@@ -21,10 +21,11 @@ public class NotificationAchievement : MonoBehaviour
 
 	private IEnumerator Delay(float time)
 	{
-		yield return new WaitForSeconds(_time * 2f + time);
-		_canvasGroup.DOFade(0, 3f);
-		yield return new WaitForSeconds(_time);
-		_onDestroy?.Invoke();
-		DestroyImmediate(gameObject);
+		/*		yield return new WaitForSeconds(_time * 2f + time);
+				_canvasGroup.DOFade(0, 3f);
+				yield return new WaitForSeconds(_time);
+				_onDestroy?.Invoke();
+				DestroyImmediate(gameObject);*/
+		yield return null;
 	}
 }

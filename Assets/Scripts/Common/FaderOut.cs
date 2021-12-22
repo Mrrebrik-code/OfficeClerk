@@ -7,6 +7,6 @@ public class FaderOut : MonoBehaviour
 
 	private void Start()
 	{
-		_image.DOFade(0, 2f);
+/*		_image.DOFade(0, 2f);*/
 	}
 }
