@@ -19,16 +19,16 @@ namespace Core
 		public void AddWorkman(WorkmanAI workman)
 		{
 			_workmans.Add(workman);
-
 			foreach (var table in _tablesWorkman)
 			{
-				if(table.IsFree && table.IsBuy)
+				if (table.IsFree && table.IsBuy)
 				{
 					workman.SetPointToStates(table.GetPoint(), _pointThirst, _pointHugry, _pointDream);
 					table.SetWorkman(workman);
 					break;
 				}
 			}
+
 			Debug.Log("Добавлен новый работник в штаб!");
 		}
 
@@ -36,7 +36,7 @@ namespace Core
 		{
 			foreach (var table in _tablesWorkman)
 			{
-				if(table.IsBuy == false)
+				if (table.IsBuy == false)
 				{
 					table.gameObject.SetActive(true);
 					table.IsBuy = true;
@@ -44,6 +44,32 @@ namespace Core
 				}
 			}
 			Bank.BankManager.Instance.History.UndoTransaction();
+		}
+
+		public int HasFreeNoBuyTables()
+		{
+			var count = 0;
+			foreach (var table in _tablesWorkman)
+			{
+				if(table.IsFree && table.IsBuy == false)
+				{
+					count++;
+				}
+			}
+			return count;
+		}
+
+		public int CountFreeToBuyTables()
+		{
+			var count = 0;
+			foreach (var table in _tablesWorkman)
+			{
+				if (table.IsFree && table.IsBuy)
+				{
+					count++;
+				}
+			}
+			return count;
 		}
 	}
 }

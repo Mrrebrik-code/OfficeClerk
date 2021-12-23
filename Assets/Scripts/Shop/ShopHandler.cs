@@ -36,7 +36,7 @@ namespace Shop
 
 			List<TypeCategoryProduct> _categorys = new List<TypeCategoryProduct>();
 
-			
+
 			foreach (var product in products)
 			{
 				switch (product.Category)
@@ -62,7 +62,7 @@ namespace Shop
 				List<Product> productsCategory = new List<Product>();
 				foreach (var product in products)
 				{
-					if(product.Category == category)
+					if (product.Category == category)
 					{
 						productsCategory.Add(product);
 					}
@@ -74,8 +74,8 @@ namespace Shop
 
 		public bool TryBuy(TypeProduct typeProduct, int count = 1)
 		{
-		
-			switch(typeProduct)
+
+			switch (typeProduct)
 			{
 				case TypeProduct.Burger:
 					BurgerStand.Instance.CookingBurgers(count);
@@ -85,11 +85,31 @@ namespace Shop
 					DeliveryManager.Instance.SetDeliveryTarget(TypeObject.WaterBox, 1);
 					break;
 				case TypeProduct.Workman:
-					var workman = FactoryWorkmanAI.Instance.Create(1);
-					GameManager.Instance.AddWorkman(workman);
+					if (GameManager.Instance.CountFreeToBuyTables() >= count)
+					{
+						for (int i = 0; i < count; i++)
+						{
+							var workman = FactoryWorkmanAI.Instance.Create(1);
+							GameManager.Instance.AddWorkman(workman);
+						}
+					}
+					else
+					{
+						Bank.BankManager.Instance.History.UndoTransaction();
+					}
 					break;
 				case TypeProduct.Table:
-					GameManager.Instance.AddTable();
+					if (GameManager.Instance.HasFreeNoBuyTables() >= count)
+					{
+						for (int i = 0; i < count; i++)
+						{
+							GameManager.Instance.AddTable();
+						}
+					}
+					else
+					{
+						Bank.BankManager.Instance.History.UndoTransaction();
+					}
 					break;
 			}
 

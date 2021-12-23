@@ -13,6 +13,6 @@ MonoBehaviour:
   m_Name: Cookie_16
   m_EditorClassIdentifier: 
   _price: 20
-  _count: 10
+  _count: 30
   _icon: {fileID: 21300000, guid: f1341a5b527b6cb43ab3ae802f037a31, type: 3}
   _type: 0
