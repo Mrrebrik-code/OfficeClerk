@@ -5,9 +5,13 @@ namespace Menu
 {
 	public class MenuHandler : MonoBehaviour
 	{
+		[SerializeField] private FaderOut _fader;
 		public void Play()
 		{
-			SceneManager.LoadScene("_Game");
+			_fader.FaderIn(() =>
+			{
+				SceneManager.LoadScene("_Game");
+			});
 		}
 	}
 }
