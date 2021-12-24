@@ -6,7 +6,6 @@ namespace Interactive.Things
 	public class Table : MonoBehaviour, IThings
 	{
 		[SerializeField] private Transform _pointMove;
-
 		public TypeObject Type { get; set; }
 
 		private void Awake()

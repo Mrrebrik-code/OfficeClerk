@@ -9,6 +9,7 @@ namespace Menu
 		[SerializeField] private Button _button;
 		[SerializeField] private Image _image;
 		[SerializeField] private TMP_Text _nameButton;
+		[SerializeField] private HandTutorial _handTutorial;
 		private bool _isSelected;
 		private PanelTable _panel;
 		public void Init(PanelTable panel)
@@ -16,6 +17,12 @@ namespace Menu
 			_panel = panel;
 			_nameButton.text = panel.Name;
 			_button.onClick.AddListener(OpenPenel);
+			if(panel.Name == "Магазин")
+			{
+				_handTutorial.Type = TypeHandTutorial.ButtonShop;
+				TutorialManager.Instance.AddHand(_handTutorial);
+			}
+			
 		}
 		public void SelectedSwitch()
 		{

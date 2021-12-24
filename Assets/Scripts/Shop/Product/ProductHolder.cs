@@ -12,12 +12,18 @@ namespace Shop
 		[SerializeField] private TMP_Text _priceProductText;
 		[SerializeField] private Image _imageProduct;
 		[SerializeField] private ProductCounter _counter;
+		[SerializeField] private HandTutorial _hand;
 
 		public void SetProduct(Product product)
 		{
 			Product = product;
 			_nameProductText.text = product.Name;
 			_imageProduct.sprite = product.Sprite;
+			if(product.Type == TypeProduct.Burger)
+			{
+				_hand.Type = TypeHandTutorial.ProductBurger;
+				TutorialManager.Instance.AddHand(_hand);
+			}
 			UpdatePriceProduct();
 
 			_counter.OnUpdateCounter += UpdatePriceProduct;
@@ -35,6 +41,7 @@ namespace Shop
 			{
 				if (callback)
 				{
+					_hand.Complet();
 					ShopHandler.Instance.TryBuy(Product.Type, _counter.Count);
 				}
 				else
