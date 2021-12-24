@@ -1,9 +1,9 @@
-﻿using Interactive;
-using Interactive.Things;
-using Shop.Delivery;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
+using Interactive;
+using Interactive.Things;
+using Shop.Delivery;
 using Utils;
 using Factories;
 using Core;
@@ -80,24 +80,23 @@ namespace Shop
 				case TypeProduct.Burger:
 					BurgerStand.Instance.CookingBurgers(count);
 					break;
+
 				case TypeProduct.WaterBox:
 					FactoryWaterBox.Instance.Create(count);
 					DeliveryManager.Instance.SetDeliveryTarget(TypeObject.WaterBox, 1);
 					break;
+
 				case TypeProduct.Workman:
 					if (GameManager.Instance.CountFreeToBuyTables() >= count)
 					{
 						for (int i = 0; i < count; i++)
 						{
-							var workman = FactoryWorkmanAI.Instance.Create(1);
-							GameManager.Instance.AddWorkman(workman);
+							GameManager.Instance.AddWorkman(FactoryWorkmanAI.Instance.Create(1));
 						}
 					}
-					else
-					{
-						Bank.BankManager.Instance.History.UndoTransaction();
-					}
+					else Bank.BankManager.Instance.History.UndoTransaction();
 					break;
+
 				case TypeProduct.Table:
 					if (GameManager.Instance.HasFreeNoBuyTables() >= count)
 					{

@@ -1,16 +1,11 @@
 ﻿using System;
 using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using Utils;
 
 public class AnimationUpdater : SingletonMono<AnimationUpdater>
 {
-	void Update()
-	{
-	}
-
 	#region Fade
 	public void Fade(Image image, float start, float target, float time, Action callback)
 	{
