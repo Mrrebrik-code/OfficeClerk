@@ -8,5 +8,6 @@ public enum TypeHandTutorial
 	ButtonShop,
 	ButtonCategoryProduct,
 	ProductBurger,
-	EatCategory
+	EatCategory,
+	ButtonCloseTableMenu
 }

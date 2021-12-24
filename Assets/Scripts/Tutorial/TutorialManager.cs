@@ -37,27 +37,36 @@ public class TutorialManager : SingletonMono<TutorialManager>
 		handTable.gameObject.SetActive(true);
 
 		var handCategoryEat = _hands[TypeHandTutorial.EatCategory];
-		handCategoryEat.gameObject.SetActive(true);
-
 		var handProductBurger = _hands[TypeHandTutorial.ProductBurger];
-		handProductBurger.gameObject.SetActive(true);
-
 		var handShopButton = _hands[TypeHandTutorial.ButtonShop];
-		handShopButton.gameObject.SetActive(true);
+		var handButtonCloseTableMenu = _hands[TypeHandTutorial.ButtonCloseTableMenu];
+
 
 		while (handTable.IsDone == false)
 		{
 			yield return null;
 		}
+
+		handShopButton.gameObject.SetActive(true);
 		while (handShopButton.IsDone == false)
 		{
 			yield return null;
 		}
-		while(handCategoryEat.IsDone == false)
+
+		handCategoryEat.gameObject.SetActive(true);
+		while (handCategoryEat.IsDone == false)
 		{
 			yield return null;
 		}
-		while(handProductBurger.IsDone == false)
+
+		handProductBurger.gameObject.SetActive(true);
+		while (handProductBurger.IsDone == false)
+		{
+			yield return null;
+		}
+
+		handButtonCloseTableMenu.gameObject.SetActive(true);
+		while (handButtonCloseTableMenu.IsDone == false)
 		{
 			yield return null;
 		}

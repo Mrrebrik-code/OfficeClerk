@@ -12,12 +12,12 @@ public class HandTutorial : MonoBehaviour
 	}
 	public void Hide()
 	{
-		Destroy(gameObject);
+		gameObject.SetActive(false);
 	}
 
 	public void Complet()
 	{
-		if(TutorialManager.Instance.CurrentTutorial == Tutorials.Shop)
+		if(TutorialManager.Instance.IsTutorialRun == true && TutorialManager.Instance.CurrentTutorial == Tutorials.Shop)
 		{
 			IsDone = true;
 			Hide();
